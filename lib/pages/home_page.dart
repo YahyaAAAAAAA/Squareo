@@ -50,10 +50,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  void test() {
-    print('');
-  }
-
   @override
   Widget build(BuildContext context) {
     return MeshGradient(
