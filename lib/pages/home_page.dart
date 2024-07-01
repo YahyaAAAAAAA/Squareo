@@ -299,10 +299,9 @@ class _HomePageState extends State<HomePage> {
                 companyName: 'Yahya',
                 phoneNumber: '+962797863063',
                 dividerThickness: 2,
-                githubUserName: null, //'YahyaAmarneh',
-
+                githubUserName: 'YahyaAmarneh', //'YahyaAmarneh',
                 linkedinURL:
-                    null, //'https://www.linkedin.com/in/yahya-amarneh-315528229/'
+                    'https://www.linkedin.com/in/yahya-amarneh-315528229/', //'https://www.linkedin.com/in/yahya-amarneh-315528229/'
                 tagLine: 'Software Engineer',
                 twitterHandle: null, //AHHHHHHHHHHH29
                 textColor: c.mainColor1,
