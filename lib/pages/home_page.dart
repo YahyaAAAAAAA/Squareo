@@ -22,8 +22,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //* starting page , nothing much
-
   //colors
   CustomColors c = CustomColors();
 
@@ -50,6 +48,10 @@ class _HomePageState extends State<HomePage> {
     _selectedTheme = square.db.themeSwitch;
 
     super.initState();
+  }
+
+  void test() {
+    print('');
   }
 
   @override
