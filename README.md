@@ -1,4 +1,4 @@
-<h2 align="left">Welcome to my game Squareo, I'm Yahya Amarneh</h2>
+<h2 align="left">Welcome to my game Squareo, I'm Yahya</h2>
 
 ###
 
@@ -90,6 +90,6 @@ https://github.com/YahyaAmarneh/Squareo/assets/44685017/9f37b5b4-c8a6-494d-bbfa-
 
 ###
 
-<p align="left">Squareo is developed by Yahya Amarneh. I hope you enjoy playing my game as much as I enjoyed creating it. For support or feedback, please contact us above.</p>
+<p align="left">Squareo is developed by me Yahya Amarneh. I hope you enjoy playing my game as much as I enjoyed creating it. For support or feedback, please contact me above.</p>
 
 ###
