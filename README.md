@@ -2,7 +2,7 @@
 
 ###
 
-<img align="right" height="150" src="assets/icon/squareo_bg.png"  />
+<img align="right" height="110" src="assets/icon/squareo_icon.png"  />
 
 ###
 
