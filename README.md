@@ -39,7 +39,7 @@
 ###
 
 <div align="center">
-  <img height="150" src="assets/icon/squareo_profile_2.png"  />
+  <img height="550"  src="assets/icon/Squareo_video.gif"  />
 </div>
 
 ###
