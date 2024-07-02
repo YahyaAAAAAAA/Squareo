@@ -42,7 +42,8 @@ class _HomePageState extends State<HomePage> {
     // square.db.createInitialDataInner();
     // square.db.createInitialDataScores();
     // square.db.createInitialDataTheme();
-    // square.db.updateDataBase();
+    square.db.coins = 5000;
+    square.db.updateDataBase();
     // square.db.levelsUnlock[10] = true;
 
     _selectedTheme = square.db.themeSwitch;
