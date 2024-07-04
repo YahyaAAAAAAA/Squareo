@@ -153,7 +153,23 @@ class TargetsController extends GetxController {
     t.color.value = newColor;
     //update list for grid visual
     list[t.index][1] = newColor;
-    // unlockFlag.value = true;
+  }
+
+  //change indiviual targets color
+  Future<void> colorChangeAll(String newColor, String oldColor) async {
+    //update the color for win condition
+    // t.color.value = newColor;
+    for (int i = 0; i < list.length; i++) {
+      //update list for grid visual
+      if (list[i][1] == oldColor) {
+        list[i][1] = newColor;
+      }
+    }
+    for (int i = 0; i < targets.length; i++) {
+      if (targets[i].color.value == oldColor) {
+        targets[i].color.value = newColor;
+      }
+    }
   }
 
   //to skip current level and unlocks it
@@ -311,10 +327,23 @@ class TargetsController extends GetxController {
   }
 
   //moves target in a path
-  Future toPath(Target t, int goal, {bool lastMove = false}) async {
+  Future toPath(
+    Target t,
+    int goal, {
+    bool lastMove = false,
+    String color = '',
+  }) async {
     List<int> path =
         breadthFirst.bfs(t.index, goal, gridSize[0], gridSize[1]).cast<int>();
+
     for (int i = 0; i < path.length; i++) {
+      //color change
+      if (color != '') {
+        if (i == (path.length / 2).floor()) {
+          colorChange(color, t);
+        }
+      }
+      //moves
       await to(t, path[i],
           lastMove: ((i == path.length - 1) && lastMove) ? true : false);
     }

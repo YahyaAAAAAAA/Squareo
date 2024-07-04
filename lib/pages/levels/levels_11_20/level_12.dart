@@ -23,10 +23,10 @@ class _Level_12State extends State<Level_12> {
   CustomColors c = CustomColors();
 
   //this specifiy the number of columns , it must be provived and cannot be changed throw the same leve .
-  final int columnSize = 7;
+  final int columnSize = 5;
 
   //this specifiy the number of rows , it must be provived and cannot be changed throw the same leve .
-  final int rowsSize = 7;
+  final int rowsSize = 5;
 
   final int _start = 3;
 
@@ -36,19 +36,23 @@ class _Level_12State extends State<Level_12> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target yellow;
+  late Target green300;
+  late Target blue700;
   late Target green;
-  late Target red;
-  late Target tealAccent;
+  late Target blue300;
+  late Target blue;
+  late Target green700;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    yellow = Target(index: 4, color: c.wrongColor);
-    green = Target(index: 5, color: c.green);
-    red = Target(index: 7, color: c.red);
-    tealAccent = Target(index: 18, color: c.tealAccent);
+    green300 = Target(index: 0, color: c.green300);
+    blue700 = Target(index: 2, color: c.blue700);
+    green = Target(index: 4, color: c.green);
+    blue300 = Target(index: 11, color: c.blue300);
+    blue = Target(index: 13, color: c.blue);
+    green700 = Target(index: 17, color: c.green700);
 
     //steps starts in 0
     g.steps.value = 0;
@@ -59,6 +63,12 @@ class _Level_12State extends State<Level_12> {
     //passing context
     g.context = context;
 
+    //increment tries
+    if (square.db.scores[g.level.value - 1][2] != 'A+') {
+      square.db.scores[g.level.value - 1][3] += 1;
+      square.db.updateDataBase();
+    }
+
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       //make sure startTime only called once , same with showAlert
       square.startTimer(context, _start);
@@ -67,7 +77,7 @@ class _Level_12State extends State<Level_12> {
       //initlize the grid size [rows,columns] (must be called)
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
-      g.targets = [yellow, green, red, tealAccent];
+      g.targets = [blue700, green, blue300, blue, green300, green700];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
       //the constant amount between moves (milliseconds)
@@ -83,8 +93,31 @@ class _Level_12State extends State<Level_12> {
       //movements starts here
 
       // blue.secondIndex = blue.initIndex - columnSize;
-      g.colorChange(c.yellow.value, yellow);
-      await g.left(yellow, lastMove: true);
+
+      g.toPath(green300, 20);
+      await g.toPath(green, 24);
+
+      await g.down(blue700);
+
+      g.toPath(blue300, 0);
+      await g.toPath(blue, 4);
+
+      g.toPath(blue700, 13);
+      await g.toPath(green700, 11);
+
+      g.down(blue700);
+      await g.up(green700);
+
+      g.colorChange(c.red700.value, green700);
+      g.right(green700);
+      await g.left(blue700);
+
+      g.toPath(blue, 13);
+      await g.toPath(green300, 11, color: c.red300.value);
+
+      g.toPath(blue300, 2);
+      await g.toPath(green, 22, color: c.red.value, lastMove: true);
+
       //post frame callback end
     });
 

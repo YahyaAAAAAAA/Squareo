@@ -53,6 +53,9 @@ class Square {
   //display a lock icon till last move it changes it to unlock
   bool unlockFlag = false;
 
+  //! total levels made (currently 12) change till 30
+  int totalLevels = 12;
+
   //for comparing best grade
   List<String> grades = [
     'A+',
@@ -170,6 +173,7 @@ class Square {
   ///shows a dialog indicating a player won the level , from it you can go back to [levelsPage] , or [nextLevel]
   void showWinAlert(BuildContext context, int index,
       {var time = 0, var steps = 0, int coins = 0, String grade = ''}) {
+    print(index);
     showGeneralDialog(
       context: context,
       barrierDismissible: barrierDismiss,
@@ -467,9 +471,12 @@ class Square {
                                       fontFamily: 'PlaywritePL',
                                     ),
                                     gradient: LinearGradient(
-                                      colors: grade == 'A+'
-                                          ? c.aPlus
-                                          : c.gradesColor,
+                                      colors: grade == 'A+' &&
+                                              db.scores[index - 2][3] == 1
+                                          ? c.aPlusTries
+                                          : grade == 'A+'
+                                              ? c.aPlus
+                                              : c.gradesColor,
                                     ),
                                     children: [
                                       TextSpan(
@@ -995,7 +1002,7 @@ class Square {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         VerticalBarIndicator(
-                          percent: counts[0] / 10,
+                          percent: counts[0] / totalLevels,
                           header: counts[0].toInt().toString(),
                           width: 30,
                           footerStyle: textStyle,
@@ -1005,7 +1012,7 @@ class Square {
                           color: colors,
                         ),
                         VerticalBarIndicator(
-                          percent: counts[1] / 10,
+                          percent: counts[1] / totalLevels,
                           header: counts[1].toString()[0],
                           width: 30,
                           headerStyle: textStyle,
@@ -1015,7 +1022,7 @@ class Square {
                           color: colors,
                         ),
                         VerticalBarIndicator(
-                          percent: counts[2] / 10,
+                          percent: counts[2] / totalLevels,
                           header: counts[2].toString()[0],
                           width: 30,
                           headerStyle: textStyle,
@@ -1032,7 +1039,7 @@ class Square {
                       children: [
                         VerticalBarIndicator(
                           width: 30,
-                          percent: counts[3] / 10,
+                          percent: counts[3] / totalLevels,
                           header: counts[3].toString()[0],
                           headerStyle: textStyle,
                           footerStyle: textStyle,
@@ -1041,7 +1048,7 @@ class Square {
                           color: colors,
                         ),
                         VerticalBarIndicator(
-                          percent: counts[4] / 10,
+                          percent: counts[4] / totalLevels,
                           header: counts[4].toString()[0],
                           width: 30,
                           headerStyle: textStyle,
@@ -1051,7 +1058,7 @@ class Square {
                           color: colors,
                         ),
                         VerticalBarIndicator(
-                          percent: counts[5] / 10,
+                          percent: counts[5] / totalLevels,
                           header: counts[5].toString()[0],
                           width: 30,
                           headerStyle: textStyle,
@@ -1068,7 +1075,7 @@ class Square {
                       children: [
                         VerticalBarIndicator(
                           width: 30,
-                          percent: counts[6] / 10,
+                          percent: counts[6] / totalLevels,
                           header: counts[6].toString()[0],
                           headerStyle: textStyle,
                           footerStyle: textStyle,
@@ -1077,7 +1084,7 @@ class Square {
                           color: colors,
                         ),
                         VerticalBarIndicator(
-                          percent: counts[7] / 10,
+                          percent: counts[7] / totalLevels,
                           header: counts[7].toString()[0],
                           width: 30,
                           headerStyle: textStyle,
@@ -1087,7 +1094,7 @@ class Square {
                           color: colors,
                         ),
                         VerticalBarIndicator(
-                          percent: counts[8] / 10,
+                          percent: counts[8] / totalLevels,
                           header: counts[8].toString()[0],
                           width: 30,
                           headerStyle: textStyle,
@@ -1097,7 +1104,7 @@ class Square {
                           color: colors,
                         ),
                         VerticalBarIndicator(
-                          percent: counts[9] / 10,
+                          percent: counts[9] / totalLevels,
                           header: counts[9].toString()[0],
                           width: 30,
                           headerStyle: textStyle,
@@ -1300,15 +1307,27 @@ class Square {
                   ],
                 ),
               ),
-              child: Icon(
-                fruits[index][1] == c.wrongColor ? null : iconDecider(),
-                color: c.transparent.withOpacity(0.2),
-                size: db.squaresIcon == 3
-                    ? 30
-                    : db.squaresIcon == 2
-                        ? 30
-                        : 24,
-              ),
+              child: numbersFlag
+                  ? Center(
+                      child: Text(
+                        index.toString(),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 21,
+                        ),
+                      ),
+                    )
+                  : Icon(
+                      fruits[index][1] == c.wrongColor ? null : iconDecider(),
+                      color: c.transparent.withOpacity(0.2),
+                      size: db.squaresIcon == 3
+                          ? 30
+                          : db.squaresIcon == 2
+                              ? 30
+                              : 24,
+                    ),
             ),
           ),
         ),

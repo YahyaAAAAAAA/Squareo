@@ -5,6 +5,7 @@ import 'package:Squareo/pages/levels_page.dart';
 import 'package:Squareo/utils/colors.dart';
 import 'package:Squareo/utils/square.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_popup/flutter_popup.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
@@ -148,26 +149,9 @@ class _ScoresPageState extends State<ScoresPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   //total grades
-                  GradesButton(
-                    c: c,
-                    icon: CustomIcons.test,
-                    text: 'Total Grades',
-                    onPressed: () => square.showBarChartDialog(context,
-                        gradesCounts, colors, defaultTextStyle('Abel')),
-                  ),
+                  totalGrades(context),
                   //average time,moves,grade
-                  GradesButton(
-                    c: c,
-                    icon: CustomIcons.tachometer_alt_average,
-                    text: 'Average Scores',
-                    onPressed: () => square.showAverageDialog(
-                      context,
-                      wonLevels != 0 ? (timeSum / wonLevels).round() : 0,
-                      wonLevels != 0 ? (movesSum / wonLevels).round() : 0,
-                      getGrade(avg),
-                      defaultTextStyle('Abel'),
-                    ),
-                  ),
+                  averageScores(context),
                 ],
               ),
               Divider(
@@ -177,125 +161,208 @@ class _ScoresPageState extends State<ScoresPage> {
                 endIndent: 25,
               ),
               //scores list
-              Expanded(
-                child: ListView.builder(
-                  itemCount: square.db.scores.length,
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) {
-                    if (square.db.scores[index][0] == 0 &&
-                        square.db.scores[index][1] == 0) {
-                      return lockedLevels
-                          ? Padding(
-                              padding: const EdgeInsets.all(15.0),
-                              child: Row(
-                                children: [
-                                  levelsCircleAvatar(index, false),
-                                  SizedBox(width: 20),
-                                  Expanded(
-                                    child: Container(
-                                        padding: EdgeInsets.all(20),
-                                        decoration: BoxDecoration(
-                                          color: Colors.grey.shade300
-                                              .withOpacity(0.7),
-                                          borderRadius:
-                                              BorderRadius.circular(12),
-                                        ),
-                                        child: Text('')),
-                                  ),
-                                ],
-                              ),
-                            )
-                          : SizedBox();
-                    } else {
-                      return Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Row(
-                          children: [
-                            levelsCircleAvatar(index, true),
-                            SizedBox(width: 20),
-                            Expanded(
-                              child: Container(
-                                padding: EdgeInsets.all(20),
-                                decoration: BoxDecoration(
-                                  color: c.mainColor1.withOpacity(0.7),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Icon(
-                                        CustomIcons.duration_alt,
-                                        color: c.textColor,
-                                        size: 20,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        'Time : ${square.db.scores[index][0]}',
-                                        style: TextStyle(
-                                          color: c.textColor,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Abel',
-                                        ),
-                                      ),
-                                      const SizedBox(width: 15),
-                                      Icon(
-                                        CustomIcons.shoe_prints,
-                                        color: c.textColor,
-                                        size: 20,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      Text(
-                                        'Moves : ${square.db.scores[index][1]}',
-                                        style: TextStyle(
-                                          color: c.textColor,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          fontFamily: 'Abel',
-                                        ),
-                                      ),
-                                      const SizedBox(width: 15),
-                                      Icon(
-                                        CustomIcons.splotch,
-                                        color: c.textColor,
-                                        size: 20,
-                                      ),
-                                      const SizedBox(width: 10),
-                                      GradientText(
-                                        square.db.scores[index][2],
-                                        style: TextStyle(
-                                          color: c.textColor,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          fontFamily: 'PlaywritePL',
-                                        ),
-                                        gradient: LinearGradient(
-                                          colors:
-                                              square.db.scores[index][2] == 'A+'
-                                                  ? c.aPlus
-                                                  : c.gradesColor,
-                                        ),
-                                        children: [],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      );
-                    }
-                  },
-                ),
-              ),
+              scoresList(),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Expanded scoresList() {
+    return Expanded(
+      child: ListView.builder(
+        itemCount: square.db.scores.length,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          if (square.db.scores[index][0] == 0 &&
+              square.db.scores[index][1] == 0) {
+            return lockedLevels
+                ? Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Row(
+                      children: [
+                        levelsCircleAvatar(index, false),
+                        SizedBox(width: 20),
+                        Expanded(
+                          child: Container(
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: Colors.grey.shade300.withOpacity(0.7),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              child: Text('')),
+                        ),
+                      ],
+                    ),
+                  )
+                : SizedBox();
+          } else {
+            return Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                children: [
+                  levelsCircleAvatar(index, true),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: c.mainColor1.withOpacity(0.6),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Icon(
+                              CustomIcons.duration_alt,
+                              color: c.textColor,
+                              size: 20,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              'Time : ${square.db.scores[index][0]}',
+                              style: TextStyle(
+                                color: c.textColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Abel',
+                              ),
+                            ),
+                            const SizedBox(width: 15),
+                            Icon(
+                              CustomIcons.shoe_prints,
+                              color: c.textColor,
+                              size: 20,
+                            ),
+                            const SizedBox(width: 10),
+                            Text(
+                              'Moves : ${square.db.scores[index][1]}',
+                              style: TextStyle(
+                                color: c.textColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Abel',
+                              ),
+                            ),
+                            const SizedBox(width: 15),
+                            Icon(
+                              CustomIcons.splotch,
+                              color: c.textColor,
+                              size: 20,
+                            ),
+                            const SizedBox(width: 10),
+                            square.db.scores[index][2] == 'A+'
+                                //if grade is A+
+                                ? CustomPopup(
+                                    backgroundColor: c.bgSheetColor,
+                                    arrowColor: c.bgSheetColor,
+                                    content: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(
+                                          CustomIcons.motivation,
+                                          color: square.db.scores[index][3] == 1
+                                              ? const Color.fromARGB(
+                                                  255, 247, 113, 135)
+                                              : const Color(0xFFFFD700),
+                                          size: 32,
+                                        ),
+                                        const SizedBox(width: 10),
+                                        GradientText(
+                                          square.db.scores[index][3] == 1
+                                              ? "In ${square.db.scores[index][3].toString()} Attempt"
+                                              : "In ${square.db.scores[index][3].toString()} Attempts",
+                                          style: TextStyle(
+                                            color: c.bgSheetColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                            fontFamily: 'Abel',
+                                          ),
+                                          gradient: LinearGradient(
+                                            colors:
+                                                square.db.scores[index][3] == 1
+                                                    ? c.aPlusTries
+                                                    : c.aPlus,
+                                          ),
+                                          children: [],
+                                        ),
+                                      ],
+                                    ),
+                                    child: GradientText(
+                                      square.db.scores[index][2],
+                                      style: TextStyle(
+                                        color: c.textColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                        fontFamily: 'PlaywritePL',
+                                      ),
+                                      gradient: LinearGradient(
+                                        colors: square.db.scores[index][2] ==
+                                                    'A+' &&
+                                                square.db.scores[index][3] == 1
+                                            ? c.aPlusTries
+                                            : square.db.scores[index][2] == 'A+'
+                                                ? c.aPlus
+                                                : c.gradesColor,
+                                      ),
+                                      children: [],
+                                    ),
+                                  )
+                                //if grade not A+
+                                : GradientText(
+                                    square.db.scores[index][2],
+                                    style: TextStyle(
+                                      color: c.textColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                      fontFamily: 'PlaywritePL',
+                                    ),
+                                    gradient: LinearGradient(
+                                      colors: square.db.scores[index][2] == 'A+'
+                                          ? c.aPlus
+                                          : c.gradesColor,
+                                    ),
+                                    children: [],
+                                  ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  GradesButton totalGrades(BuildContext context) {
+    return GradesButton(
+      c: c,
+      icon: CustomIcons.test,
+      text: 'Total Grades',
+      onPressed: () => square.showBarChartDialog(
+          context, gradesCounts, colors, defaultTextStyle('Abel')),
+    );
+  }
+
+  GradesButton averageScores(BuildContext context) {
+    return GradesButton(
+      c: c,
+      icon: CustomIcons.tachometer_alt_average,
+      text: 'Average Scores',
+      onPressed: () => square.showAverageDialog(
+        context,
+        wonLevels != 0 ? (timeSum / wonLevels).round() : 0,
+        wonLevels != 0 ? (movesSum / wonLevels).round() : 0,
+        getGrade(avg),
+        defaultTextStyle('Abel'),
       ),
     );
   }

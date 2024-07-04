@@ -61,6 +61,12 @@ class _Level_7State extends State<Level_7> {
     //passing context
     g.context = context;
 
+    //increment tries
+    if (square.db.scores[g.level.value - 1][2] != 'A+') {
+      square.db.scores[g.level.value - 1][3] += 1;
+      square.db.updateDataBase();
+    }
+
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       //make sure startTime only called once , same with showAlert
       square.startTimer(context, _start);

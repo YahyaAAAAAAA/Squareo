@@ -224,20 +224,22 @@ class CustomColors {
     const Color(0xFFB39700),
   ];
 
+  List<Color> aPlusTries = [
+    const Color.fromARGB(255, 247, 113, 135),
+    const Color(0xFFF1DAB7),
+    const Color.fromARGB(255, 36, 219, 226),
+  ];
+
   //squares colors , (in strings cuz i'm scared of Hive)
-  // color tags for later
-  //* red 0xFFF44336
-  //* green 0xFF4CAF50
-  //* blue 0xFF2196F3
-  //* yellow 0xFFC6FF2A
-  //* purple 0xFF9C27B0
-  //* default 0xFF292A31
-  Color c = const Color(0xFFF44336);
-  Color cc = const Color(0xFFE57373);
-  Color ccc = const Color(0xFFD32F2F);
+  Color c = const Color(0xFF4CAF50);
+  Color cc = const Color(0xFF81C784);
+  Color ccc = const Color(0xFF388E3C);
 
   RxString wrongColor = "0xFFE3D3D3".obs;
+
   RxString green = "0xFF4CAF50 ".obs;
+  RxString green300 = "0xFF81C784 ".obs;
+  RxString green700 = "0xFF388E3C ".obs;
 
   RxString blue = "0xFF2196F3".obs;
   RxString blue300 = "0xFF64B5F6".obs;
