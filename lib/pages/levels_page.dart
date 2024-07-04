@@ -1,5 +1,6 @@
 import 'package:Squareo/compnents/custom_icons.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_11.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_12.dart';
 import 'package:Squareo/pages/scores_page.dart';
 import 'package:Squareo/utils/square.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -265,6 +266,13 @@ class _LevelsPageState extends State<LevelsPage> {
         showScaffoldMessenger(index + 10);
       }
     }
+    if (index == 1) {
+      if (square.db.levelsUnlock[11]) {
+        Get.offAll(() => Level_12(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 10);
+      }
+    }
   }
 
   //method for entering levels from 21 to 30 , shouldn't be changed
@@ -494,6 +502,11 @@ class _LevelsPageState extends State<LevelsPage> {
             options: CarouselOptions(
               enableInfiniteScroll: true,
               height: 600,
+              initialPage: square.db.levelsUnlock[20]
+                  ? 2
+                  : square.db.levelsUnlock[10]
+                      ? 1
+                      : 0,
               viewportFraction: 0.5,
               enlargeFactor: 1,
               enlargeCenterPage: true,

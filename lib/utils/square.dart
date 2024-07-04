@@ -3,6 +3,7 @@ import 'package:Squareo/compnents/custom_icons.dart';
 import 'package:Squareo/compnents/gradient_text.dart';
 import 'package:Squareo/compnents/square_clipper.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_11.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_12.dart';
 import 'package:Squareo/state/target_controller.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
@@ -1329,9 +1330,14 @@ class Square {
   //        ),
   //       ),
   // Icon(
-  //   iconDecider(),
+  //  fruits[index][1] == c.wrongColor ? null : iconDecider(),
   //   color: c.transparent.withOpacity(0.2),
-  //  ),
+  //    size: db.squaresIcon == 3
+  //     ? 30
+  //       : db.squaresIcon == 2
+  //           ? 30
+  //             : 24,
+  //             ),
 
   //decides the square's inner clipPath (customiziton)
   CustomClipper<Path>? innerDecider() {
@@ -1499,6 +1505,9 @@ class Square {
     }
     if (index == 11) {
       Get.offAll(() => Level_11(), transition: Transition.size);
+    }
+    if (index == 12) {
+      Get.offAll(() => Level_12(), transition: Transition.size);
     }
   }
 

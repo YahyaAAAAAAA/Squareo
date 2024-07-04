@@ -9,24 +9,24 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_11 extends StatefulWidget {
-  const Level_11({super.key});
+class Level_12 extends StatefulWidget {
+  const Level_12({super.key});
 
   @override
-  State<Level_11> createState() => _Level_11State();
+  State<Level_12> createState() => _Level_12State();
 }
 
-class _Level_11State extends State<Level_11> {
+class _Level_12State extends State<Level_12> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
   CustomColors c = CustomColors();
 
   //this specifiy the number of columns , it must be provived and cannot be changed throw the same leve .
-  final int columnSize = 5;
+  final int columnSize = 7;
 
   //this specifiy the number of rows , it must be provived and cannot be changed throw the same leve .
-  final int rowsSize = 5;
+  final int rowsSize = 7;
 
   final int _start = 3;
 
@@ -45,7 +45,7 @@ class _Level_11State extends State<Level_11> {
   void initState() {
     square.hiveDataCheck();
 
-    yellow = Target(index: 4, color: c.yellow);
+    yellow = Target(index: 4, color: c.wrongColor);
     green = Target(index: 5, color: c.green);
     red = Target(index: 7, color: c.red);
     tealAccent = Target(index: 18, color: c.tealAccent);
@@ -54,7 +54,7 @@ class _Level_11State extends State<Level_11> {
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 11;
+    g.level.value = 12;
 
     //passing context
     g.context = context;
@@ -83,27 +83,8 @@ class _Level_11State extends State<Level_11> {
       //movements starts here
 
       // blue.secondIndex = blue.initIndex - columnSize;
-      await g.down(green);
-      await g.colorChange(c.blue.value, green);
-      await g.toPath(green, 20);
-
-      await g.colorChange(c.amber.value, tealAccent);
-      await g.toPath(tealAccent, 5);
-
-      g.colorChange(c.teal.value, yellow);
-      g.colorChange(c.teal.value, red);
-
-      g.toPath(yellow, 21);
-      await g.toPath(red, 16);
-      await g.toPath(red, 18);
-
-      g.toPath(green, 0);
-      await g.toPath(tealAccent, 13);
-
-      await g.colorChange(c.yellow.value, tealAccent);
-      await g.left(yellow);
-      g.right(green);
-      await g.up(red, lastMove: true);
+      g.colorChange(c.yellow.value, yellow);
+      await g.left(yellow, lastMove: true);
       //post frame callback end
     });
 
