@@ -37,22 +37,22 @@ class _Level_14State extends State<Level_14> {
 
   //individual targets put in targets list
   late Target teal;
-  late Target teal300;
-  late Target teal700;
-  late Target amber700;
+  late Target deepOrange;
+  late Target pink300;
+  late Target red;
   late Target amber;
-  late Target amberAccent;
+  late Target purple;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
     teal = Target(index: 3, color: c.teal);
-    teal300 = Target(index: 4, color: c.teal300);
-    teal700 = Target(index: 14, color: c.teal700);
-    amber700 = Target(index: 10, color: c.amber700d);
+    deepOrange = Target(index: 4, color: c.deepOrange);
+    pink300 = Target(index: 14, color: c.pink300);
+    red = Target(index: 10, color: c.red);
     amber = Target(index: 20, color: c.amber);
-    amberAccent = Target(index: 21, color: c.amberAccent);
+    purple = Target(index: 21, color: c.purple);
 
     //steps starts in 0
     g.steps.value = 0;
@@ -77,7 +77,7 @@ class _Level_14State extends State<Level_14> {
       //initlize the grid size [rows,columns] (must be called)
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
-      g.targets = [teal300, teal700, amber700, amber, teal, amberAccent];
+      g.targets = [deepOrange, pink300, red, amber, teal, purple];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
       //the constant amount between moves (milliseconds)
@@ -91,11 +91,40 @@ class _Level_14State extends State<Level_14> {
       await g.delay();
 
       //movements starts here
-      // g.colorSwitch(teal, amber);
-      await g.toGivenPath(teal700, [13, 12, 7, 6],
-          lastMove: true, color: c.red.value);
-      // g.toPath(amber700, 2);
-      // await g.toPath(teal, 11, lastMove: true);
+
+      await g.colorSwitch(amber, pink300);
+      await g.delay(duration: 800);
+
+      await g.colorSwitch(red, purple);
+      await g.delay(duration: 500);
+
+      g.toGivenPath(pink300, [13, 12, 7, 6, 1]);
+      g.toGivenPath(red, [11, 16, 17, 18]);
+      await g.toPath(amber, 0);
+
+      g.toGivenPath(teal, [8, 7, 6, 11]);
+      g.toPath(red, 15);
+      await g.toPath(purple, 9);
+
+      await g.toGivenPath(deepOrange, [3, 2, 7, 6, 5, 10]);
+
+      g.down(amber);
+      g.down(pink300);
+      await g.down(purple);
+
+      await g.down(purple);
+
+      await g.toPath(purple, 16);
+
+      g.colorSwitch(deepOrange, teal);
+      g.toPath(pink300, 8);
+      g.toPath(teal, 13);
+      await g.toPath(purple, 18);
+
+      // g.colorSwitch(purple, amber);
+      g.right(amber);
+      g.right(deepOrange);
+      await g.right(red, lastMove: true);
 
       //post frame callback end
     });

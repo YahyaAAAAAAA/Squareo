@@ -44,7 +44,7 @@ class Square {
   bool activeDrag = false;
 
   //temp value for testing
-  bool numbersFlag = true;
+  bool numbersFlag = false;
 
   //temp value for testing dialogs barrier
   bool barrierDismiss = false;
@@ -56,7 +56,7 @@ class Square {
   bool unlockFlag = false;
 
   //! total levels made (currently 12) change till 30
-  int totalLevels = 13;
+  int totalLevels = 14;
 
   //for comparing best grade
   List<String> grades = [

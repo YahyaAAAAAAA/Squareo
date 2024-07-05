@@ -149,6 +149,9 @@ class TargetsController extends GetxController {
 
   //change indiviual targets color
   Future<void> colorChange(String newColor, Target t) async {
+    //sound
+    square.playSound('water');
+
     //update the color for win condition
     t.color.value = newColor;
     //update list for grid visual
@@ -157,14 +160,22 @@ class TargetsController extends GetxController {
 
   //switch 2 targets colors
   Future<void> colorSwitch(Target t1, Target t2) async {
+    //sound
+    square.playSound('water');
+
+    //causing state update
+    t1.color.value = t1.color.value;
+
+    //switching
     list[t1.index][1] = t2.color.value;
     list[t2.index][1] = t1.color.value;
   }
 
   //change all targets color with a new one
   Future<void> colorChangeAll(String newColor, String oldColor) async {
-    //update the color for win condition
-    // t.color.value = newColor;
+    //sound
+    square.playSound('water');
+
     for (int i = 0; i < list.length; i++) {
       //update list for grid visual
       if (list[i][1] == oldColor) {
@@ -172,6 +183,7 @@ class TargetsController extends GetxController {
       }
     }
     for (int i = 0; i < targets.length; i++) {
+      //update the color for win condition
       if (targets[i].color.value == oldColor) {
         targets[i].color.value = newColor;
       }
