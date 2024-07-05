@@ -6,9 +6,6 @@ import 'package:Squareo/utils/square.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_grid_view/entities/order_update_entity.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 
 class TargetsController extends GetxController {
   // grid size with rows and columns

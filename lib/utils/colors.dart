@@ -231,11 +231,19 @@ class CustomColors {
   ];
 
   //squares colors , (in strings cuz i'm scared of Hive)
-  Color c = const Color(0xFF00BCD4);
-  Color cc = const Color(0xFF4DD0E1);
-  Color ccc = const Color(0xFF0097A7);
+  Color c = const Color(0xFF673AB7);
+  Color cc = const Color(0xFF9575CD);
+  Color ccc = const Color(0xFF512DA8);
+
+  Color cccc = Colors.purple;
+  Color ccccc = Colors.purple.shade300;
+  Color cccccc = Colors.purple.shade700;
 
   RxString wrongColor = "0xFFE3D3D3".obs;
+
+  RxString deepPurple = "0xFF673AB7 ".obs;
+  RxString deepPurple300 = "0xFF9575CD ".obs;
+  RxString deepPurple700 = "0xFF512DA8 ".obs;
 
   RxString cyan = "0xFF00BCD4 ".obs;
   RxString cyan300 = "0xFF4DD0E1 ".obs;

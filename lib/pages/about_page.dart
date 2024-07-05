@@ -1,4 +1,5 @@
 import 'package:Squareo/compnents/custom_icons.dart';
+import 'package:Squareo/compnents/gradient_text.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -303,6 +304,48 @@ class _AboutPageState extends State<AboutPage> {
             ),
           ],
         ),
+      ),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          FittedBox(
+            child: Text(
+              "Your goal is to achieve",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Abel',
+                color: c.mainColor1,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          GradientText(
+            "A+",
+            children: [],
+            gradient: LinearGradient(
+              colors: c.aPlus,
+            ),
+            style: TextStyle(
+              fontSize: 30,
+              fontFamily: 'PlaywritePL',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          FittedBox(
+            child: Text(
+              "In all levels",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Abel',
+                color: c.mainColor1,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
       ),
       Column(
         mainAxisAlignment: MainAxisAlignment.center,

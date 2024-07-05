@@ -811,7 +811,6 @@ class _SettingsPageState extends State<SettingsPage> {
                   colors: [
                     previewContainerColor,
                     Colors.white,
-                    //TODO: add diff gradients to shop like (sold,frosty,marble?)
                     //0xFF89CFF0 <-baby blue and the normal
                   ],
                 ),

@@ -6,6 +6,7 @@ import 'package:Squareo/pages/levels/levels_11_20/level_11.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_12.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_13.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_14.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_15.dart';
 import 'package:Squareo/state/target_controller.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
@@ -56,7 +57,7 @@ class Square {
   bool unlockFlag = false;
 
   //! total levels made (currently 12) change till 30
-  int totalLevels = 14;
+  int totalLevels = 15;
 
   //for comparing best grade
   List<String> grades = [
@@ -1535,6 +1536,9 @@ class Square {
     }
     if (index == 14) {
       Get.offAll(() => Level_14(), transition: Transition.size);
+    }
+    if (index == 15) {
+      Get.offAll(() => Level_15(), transition: Transition.size);
     }
   }
 

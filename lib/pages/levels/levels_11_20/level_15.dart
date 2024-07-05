@@ -9,14 +9,14 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_14 extends StatefulWidget {
-  const Level_14({super.key});
+class Level_15 extends StatefulWidget {
+  const Level_15({super.key});
 
   @override
-  State<Level_14> createState() => _Level_14State();
+  State<Level_15> createState() => _Level_15State();
 }
 
-class _Level_14State extends State<Level_14> {
+class _Level_15State extends State<Level_15> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
@@ -36,29 +36,29 @@ class _Level_14State extends State<Level_14> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target teal;
-  late Target deepOrange;
-  late Target pink300;
-  late Target red;
-  late Target amber;
   late Target purple;
+  late Target deepPurple300;
+  late Target purple300;
+  late Target deepPurple;
+  late Target purple700;
+  late Target deepPurple700;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    teal = Target(index: 3, color: c.teal);
-    deepOrange = Target(index: 4, color: c.deepOrange);
-    pink300 = Target(index: 14, color: c.pink300);
-    red = Target(index: 10, color: c.red);
-    amber = Target(index: 20, color: c.amber);
-    purple = Target(index: 21, color: c.purple);
+    purple = Target(index: 10, color: c.purple);
+    purple300 = Target(index: 16, color: c.purple300);
+    purple700 = Target(index: 23, color: c.purple700);
+    deepPurple = Target(index: 9, color: c.deepPurple);
+    deepPurple300 = Target(index: 12, color: c.deepPurple300);
+    deepPurple700 = Target(index: 1, color: c.deepPurple700);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 14;
+    g.level.value = 15;
 
     //passing context
     g.context = context;
@@ -77,7 +77,14 @@ class _Level_14State extends State<Level_14> {
       //initlize the grid size [rows,columns] (must be called)
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
-      g.targets = [deepOrange, pink300, red, amber, teal, purple];
+      g.targets = [
+        deepPurple300,
+        purple300,
+        deepPurple,
+        purple700,
+        purple,
+        deepPurple700
+      ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
       //the constant amount between moves (milliseconds)
@@ -91,38 +98,25 @@ class _Level_14State extends State<Level_14> {
       await g.delay();
 
       //movements starts here
-      await g.colorSwitch(amber, pink300);
-      await g.delay(duration: 800);
+      await g.colorSwitch(deepPurple700, purple300);
+      await g.delay(duration: 700);
 
-      await g.colorSwitch(red, purple);
-      await g.delay(duration: 500);
+      g.toGivenPath(deepPurple700, [2, 3, 8, 7]);
+      g.toGivenPath(deepPurple, [8, 13, 14, 19, 24]);
+      g.toGivenPath(purple, [5, 0, 5, 10, 15]);
+      await g.toGivenPath(deepPurple300, [11, 6, 6, 6, 5, 0, 1, 2, 3]);
 
-      g.toGivenPath(pink300, [13, 12, 7, 6, 1]);
-      g.toGivenPath(red, [11, 16, 17, 18]);
-      await g.toPath(amber, 0);
+      g.toPath(deepPurple, 4);
+      g.toGivenPath(purple700, [18, 17, 12, 11, 10]);
+      g.colorSwitch(deepPurple, deepPurple300);
+      await g.toGivenPath(purple300, [21, 22, 23]);
 
-      g.toGivenPath(teal, [8, 7, 6, 11]);
-      g.toPath(red, 15);
-      await g.toPath(purple, 9);
-
-      await g.toGivenPath(deepOrange, [3, 2, 7, 6, 5, 10]);
-
-      g.down(amber);
-      g.down(pink300);
-      await g.down(purple);
-
-      await g.down(purple);
-
-      await g.toPath(purple, 16);
-
-      g.colorSwitch(deepOrange, teal);
-      g.toPath(pink300, 8);
-      g.toPath(teal, 13);
-      await g.toPath(purple, 18);
-
-      g.right(amber);
-      g.right(deepOrange);
-      await g.right(red, lastMove: true);
+      g.down(deepPurple300);
+      g.down(deepPurple);
+      g.colorSwitch(purple700, purple);
+      g.left(deepPurple700);
+      g.up(purple300);
+      await g.right(purple, lastMove: true);
 
       //post frame callback end
     });
