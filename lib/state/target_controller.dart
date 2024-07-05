@@ -155,7 +155,13 @@ class TargetsController extends GetxController {
     list[t.index][1] = newColor;
   }
 
-  //change indiviual targets color
+  //switch 2 targets colors
+  Future<void> colorSwitch(Target t1, Target t2) async {
+    list[t1.index][1] = t2.color.value;
+    list[t2.index][1] = t1.color.value;
+  }
+
+  //change all targets color with a new one
   Future<void> colorChangeAll(String newColor, String oldColor) async {
     //update the color for win condition
     // t.color.value = newColor;
@@ -326,7 +332,7 @@ class TargetsController extends GetxController {
     );
   }
 
-  //moves target in a path
+  //moves target in a shortest path (breadth first algo)
   Future toPath(
     Target t,
     int goal, {
@@ -336,6 +342,26 @@ class TargetsController extends GetxController {
     List<int> path =
         breadthFirst.bfs(t.index, goal, gridSize[0], gridSize[1]).cast<int>();
 
+    for (int i = 0; i < path.length; i++) {
+      //color change
+      if (color != '') {
+        if (i == (path.length / 2).floor()) {
+          colorChange(color, t);
+        }
+      }
+      //moves
+      await to(t, path[i],
+          lastMove: ((i == path.length - 1) && lastMove) ? true : false);
+    }
+  }
+
+  //moves target in a path of list of int
+  Future toGivenPath(
+    Target t,
+    List<int> path, {
+    bool lastMove = false,
+    String color = '',
+  }) async {
     for (int i = 0; i < path.length; i++) {
       //color change
       if (color != '') {

@@ -4,6 +4,8 @@ import 'package:Squareo/compnents/gradient_text.dart';
 import 'package:Squareo/compnents/square_clipper.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_11.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_12.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_13.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_14.dart';
 import 'package:Squareo/state/target_controller.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
@@ -32,17 +34,17 @@ class Square {
   //to displays words rather than the timer numbers
   List<String> dialogTexts = ["circle_1", "circle_3", "circle_2", "circle_1"];
   List<Color> dialogColors_2 = [
-    Colors.green.shade700,
-    Colors.green.shade700,
-    Colors.orange.shade700,
-    Colors.red.shade700
+    const Color.fromARGB(255, 149, 110, 73),
+    const Color.fromARGB(255, 149, 110, 73),
+    const Color.fromARGB(255, 185, 88, 104),
+    const Color.fromARGB(255, 23, 144, 148),
   ];
 
   //set to true after initState finishes , this enables the user to reorder the list
   bool activeDrag = false;
 
   //temp value for testing
-  bool numbersFlag = false;
+  bool numbersFlag = true;
 
   //temp value for testing dialogs barrier
   bool barrierDismiss = false;
@@ -54,7 +56,7 @@ class Square {
   bool unlockFlag = false;
 
   //! total levels made (currently 12) change till 30
-  int totalLevels = 12;
+  int totalLevels = 13;
 
   //for comparing best grade
   List<String> grades = [
@@ -147,7 +149,7 @@ class Square {
                             style: TextStyle(
                               color: c.textColor,
                               fontSize: 30,
-                              fontFamily: 'Abel',
+                              fontFamily: 'PlaywritePL',
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -1527,6 +1529,12 @@ class Square {
     }
     if (index == 12) {
       Get.offAll(() => Level_12(), transition: Transition.size);
+    }
+    if (index == 13) {
+      Get.offAll(() => Level_13(), transition: Transition.size);
+    }
+    if (index == 14) {
+      Get.offAll(() => Level_14(), transition: Transition.size);
     }
   }
 

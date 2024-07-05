@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                     _selectedTheme = 0;
                     square.db.themeSwitch = 0;
                     square.db.updateDataBase();
-                    c.colorSwitch();
+                    c.themeSwitch();
                     Navigator.pop(context);
                   });
                 },
@@ -130,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                     _selectedTheme = 1;
                     square.db.themeSwitch = 1;
                     square.db.updateDataBase();
-                    c.colorSwitch();
+                    c.themeSwitch();
                     Navigator.pop(context);
                   });
                 },

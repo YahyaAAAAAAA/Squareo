@@ -6,7 +6,7 @@ import 'package:mesh_gradient/mesh_gradient.dart';
 
 class CustomColors {
   CustomColors() {
-    colorSwitch();
+    themeSwitch();
   }
 
   //bg colors
@@ -116,7 +116,7 @@ class CustomColors {
   Database db = Database();
 
   //checks for theme
-  void colorSwitch() {
+  void themeSwitch() {
     //check theme value for the first time run
     if (_myBox.get("THEME") == null) {
       db.createInitialDataTheme();
@@ -231,11 +231,15 @@ class CustomColors {
   ];
 
   //squares colors , (in strings cuz i'm scared of Hive)
-  Color c = const Color(0xFF4CAF50);
-  Color cc = const Color(0xFF81C784);
-  Color ccc = const Color(0xFF388E3C);
+  Color c = const Color(0xFF00BCD4);
+  Color cc = const Color(0xFF4DD0E1);
+  Color ccc = const Color(0xFF0097A7);
 
   RxString wrongColor = "0xFFE3D3D3".obs;
+
+  RxString cyan = "0xFF00BCD4 ".obs;
+  RxString cyan300 = "0xFF4DD0E1 ".obs;
+  RxString cyan700 = "0xFF0097A7 ".obs;
 
   RxString green = "0xFF4CAF50 ".obs;
   RxString green300 = "0xFF81C784 ".obs;
@@ -265,6 +269,18 @@ class CustomColors {
   RxString red = "0xFFF44336".obs;
   RxString red300 = "0xFFE57373".obs;
   RxString red700 = "0xFFD32F2F".obs;
+
+  RxString orange = "0xFFFF9800".obs;
+  RxString orange300 = "0xFFFFB74D".obs;
+  RxString orange700 = "0xFFF57C00".obs;
+
+  RxString deepOrange = "0xFFFF5722".obs;
+  RxString deepOrange300 = "0xFFFF8A65".obs;
+  RxString deepOrange700 = "0xFFE64A19".obs;
+
+  RxString pink = "0xFFE91E63".obs;
+  RxString pink300 = "0xFFF06292".obs;
+  RxString pink700 = "0xFFC2185B".obs;
 
   RxString white = "0xFF5B5B5B".obs;
   RxString turquoise = "0xFF40E0D0".obs;
