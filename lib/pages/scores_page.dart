@@ -432,7 +432,7 @@ class _ScoresPageState extends State<ScoresPage> {
       leading: TextButton(
         onPressed: () {
           ///method to go back to [HomePage]
-          Get.offAll(() => LevelsPage(), transition: Transition.leftToRight);
+          Get.offAll(() => LevelsPage(), transition: Transition.upToDown);
         },
         style: ButtonStyle(
           overlayColor: WidgetStatePropertyAll(c.textColor.withOpacity(0.2)),

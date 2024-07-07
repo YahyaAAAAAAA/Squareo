@@ -176,7 +176,6 @@ class Square {
   ///shows a dialog indicating a player won the level , from it you can go back to [levelsPage] , or [nextLevel]
   void showWinAlert(BuildContext context, int index,
       {var time = 0, var steps = 0, int coins = 0, String grade = ''}) {
-    print(index);
     showGeneralDialog(
       context: context,
       barrierDismissible: barrierDismiss,
@@ -194,7 +193,7 @@ class Square {
                 ),
                 child: Container(
                   height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width / 1.2,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.transparent,

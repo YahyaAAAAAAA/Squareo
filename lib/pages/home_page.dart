@@ -51,6 +51,12 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
+  void dispose() {
+    square.player.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MeshGradient(
       points: c.points,

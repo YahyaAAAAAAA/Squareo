@@ -160,6 +160,46 @@ class _LevelsPageState extends State<LevelsPage> {
               rightIcon()
             ],
           ),
+          bottomSheet: scoresButton(),
+        ),
+      ),
+    );
+  }
+
+  Padding scoresButton() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: c.mainColor1.withOpacity(0.7),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: TextButton.icon(
+          onPressed: () {
+            Get.offAll(() => ScoresPage(), transition: Transition.downToUp);
+          },
+          style: ButtonStyle(
+            shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+            ),
+            overlayColor: WidgetStatePropertyAll(c.textColor.withOpacity(0.2)),
+          ),
+          label: Text(
+            'Scores',
+            style: TextStyle(
+              color: c.textColor,
+              fontSize: 25,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Abel',
+            ),
+          ),
+          iconAlignment: IconAlignment.end,
+          icon: Icon(
+            CustomIcons.time_fast,
+            color: c.textColor,
+          ),
         ),
       ),
     );
@@ -536,43 +576,6 @@ class _LevelsPageState extends State<LevelsPage> {
               enlargeCenterPage: true,
             ),
           ),
-          // const SizedBox(height: 10),
-          Container(
-            decoration: BoxDecoration(
-              color: c.mainColor1.withOpacity(0.7),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: TextButton.icon(
-              onPressed: () {
-                Get.offAll(() => ScoresPage(),
-                    transition: Transition.rightToLeft);
-              },
-              style: ButtonStyle(
-                shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                ),
-                overlayColor:
-                    WidgetStatePropertyAll(c.textColor.withOpacity(0.2)),
-              ),
-              label: Text(
-                'Scores',
-                style: TextStyle(
-                  color: c.textColor,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Abel',
-                ),
-              ),
-              iconAlignment: IconAlignment.end,
-              icon: Icon(
-                CustomIcons.time_fast,
-                color: c.textColor,
-              ),
-            ),
-          ),
-          // const SizedBox(height: 10),
         ],
       ),
     );

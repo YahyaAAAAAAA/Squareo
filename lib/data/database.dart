@@ -55,7 +55,7 @@ class Database {
   int coins = 0;
 
   //bought items
-  List<String> bought = [];
+  List bought = [];
 
   List scores = [
     [0, 0, '', 0],
