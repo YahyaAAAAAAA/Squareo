@@ -66,7 +66,7 @@ class _SettingsPageState extends State<SettingsPage> {
     //random color (the current color used in the first 10 levels)
     randomColors = [
       Color(int.parse(c.amber.toString())),
-      Color(int.parse(c.white.toString())),
+      Color(int.parse(c.black.toString())),
       Color(int.parse(c.blue.toString())),
       Color(int.parse(c.yellow.toString())),
       Color(int.parse(c.green.toString())),

@@ -225,21 +225,31 @@ class CustomColors {
   ];
 
   List<Color> aPlusTries = [
-    const Color.fromARGB(255, 247, 113, 135),
+    const Color(0xFFF77187),
     const Color(0xFFF1DAB7),
-    const Color.fromARGB(255, 36, 219, 226),
+    const Color(0xFF24DBE2),
   ];
 
   //squares colors , (in strings cuz i'm scared of Hive)
-  Color c = const Color(0xFF03A9F4);
-  Color cc = const Color(0xFF4FC3F7);
-  Color ccc = const Color(0xFF0288D1);
-
-  Color cccc = const Color(0xFF3F51B5);
-  Color ccccc = const Color(0xFF7986CB);
-  Color cccccc = const Color(0xFF303F9F);
+  // Color c = Colors.
 
   RxString wrongColor = "0xFFE3D3D3".obs;
+
+  RxString lima = "0xFF68BE25".obs;
+  RxString lima300 = "0xFF95D266".obs;
+  RxString lima700 = "0xFF3E7216".obs;
+
+  RxString jungle = "0xFF25BE9A".obs;
+  RxString jungle300 = "0xFF66D2B8".obs;
+  RxString jungle700 = "0xFF16725C".obs;
+
+  RxString violet = "0xFFBE25A5".obs;
+  RxString violet300 = "0xFFD266C0".obs;
+  RxString violet700 = "0xFF721663".obs;
+
+  RxString prim_1 = "0xFFF77187".obs;
+  RxString prim_2 = "0xFFF1DAB7".obs;
+  RxString prim_3 = "0xFF24DBE2".obs;
 
   RxString lightBlue = "0xFF03A9F4 ".obs;
   RxString lightBlue300 = "0xFF4FC3F7 ".obs;
@@ -287,9 +297,17 @@ class CustomColors {
   RxString red300 = "0xFFE57373".obs;
   RxString red700 = "0xFFD32F2F".obs;
 
+  RxString mexRed = "0xFF9F2C23".obs;
+  RxString mexRed300 = "0xFFB2564F".obs;
+  RxString mexRed700 = "0xFF5F1A15".obs;
+
+  RxString scarlet = "0xFFFA1200".obs;
+  RxString scarlet300 = "0xFFFEB8B3".obs;
+  RxString scarlet700 = "0xFFC80E00".obs;
+
   RxString orange = "0xFFFF9800".obs;
-  RxString orange300 = "0xFFFFB74D".obs;
-  RxString orange700 = "0xFFF57C00".obs;
+  RxString orange300 = "0xFFF57C00".obs;
+  RxString orange700 = "0xFFFFB74D".obs;
 
   RxString deepOrange = "0xFFFF5722".obs;
   RxString deepOrange300 = "0xFFFF8A65".obs;
@@ -299,6 +317,6 @@ class CustomColors {
   RxString pink300 = "0xFFF06292".obs;
   RxString pink700 = "0xFFC2185B".obs;
 
-  RxString white = "0xFF5B5B5B".obs;
+  RxString black = "0xFF5B5B5B".obs;
   RxString turquoise = "0xFF40E0D0".obs;
 }

@@ -1,30 +1,23 @@
+import 'package:Squareo/compnents/custom_icons.dart';
 import 'package:Squareo/models/target.dart';
 import 'package:Squareo/state/target_controller.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_reorderable_grid_view/entities/reorderable_entity.dart';
-//import 'package:flutter_reorderable_grid_view/widgets/animated/reorderable_animated_container.dart';
-//import 'package:flutter_reorderable_grid_view/widgets/animated/reorderable_animated_dragging_container.dart';
-//import 'package:flutter_reorderable_grid_view/widgets/animated/reorderable_animated_opacity.dart';
-//import 'package:flutter_reorderable_grid_view/widgets/animated/reorderable_animated_update_container.dart';
-//import 'package:flutter_reorderable_grid_view/widgets/animated/reorderable_draggable.dart';
-//import 'package:flutter_reorderable_grid_view/widgets/reorderable_scrolling_listener.dart';
 import 'package:Squareo/compnents/app_bar.dart';
 import 'package:Squareo/compnents/main_grid.dart';
 import 'package:Squareo/compnents/scaffold_bottom.dart';
 import 'package:Squareo/utils/colors.dart';
-
 import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_9 extends StatefulWidget {
-  const Level_9({super.key});
+class Level_19 extends StatefulWidget {
+  const Level_19({super.key});
 
   @override
-  State<Level_9> createState() => _Level_9State();
+  State<Level_19> createState() => _Level_19State();
 }
 
-class _Level_9State extends State<Level_9> {
+class _Level_19State extends State<Level_19> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
@@ -43,57 +36,37 @@ class _Level_9State extends State<Level_9> {
   //getx controller instance
   final TargetsController g = Get.put(TargetsController());
 
-  //individual targets put in targets list ^
-  late Target amber;
-  late Target white;
-  late Target purple;
-  late Target yellow;
-  late Target amber2;
-  late Target yellow2;
-
-  //! for newer levels
-  //* 1- declare targetN with the specified same on the board
-  //* 2- declare initTargetN
-  //* 3- change the color in _fruits with the crosspond in targetN + 1
-  //* 4- alter the playerWin() based on targetN == "colorHex"
-  //* 5- start making the movement in initState , order by duration
-  //* 6- add in this widget's stack
-  //  bottomSheet: TextButton(
-  //        child: Text('data'),
-  //        onPressed: () {
-  //          showDialog(
-  //            context: context,
-  //            builder: (context) {
-  //              return AlertDialog();
-  //            },
-  //          );
-  //          cube.backToMenu(context);
-  //        },
-  //      ),
-  //* 7- comment out 2 lines in cube => startTimer() method , you'll find'em there (for testing) + don't comment out anything here
-  //* 8- make sure to edit cube.nextLevel , cube.unlockNextLevel after adding new level
-  //* 9- to change color ->
-  //correctColor_2 = colorChange(
-  //            currentColor: correctColor_2,
-  //            newColor: "0xFFFFFFFF",
-  //            duration: 2900);
+  //individual targets put in targets list
+  late Target lima;
+  late Target lima300;
+  late Target lima700;
+  late Target jungle;
+  late Target jungle300;
+  late Target jungle700;
+  late Target violet;
+  late Target violet300;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    amber = Target(index: 1, color: c.amber);
-    white = Target(index: 8, color: c.black);
-    purple = Target(index: 10, color: c.purple);
-    yellow = Target(index: 14, color: c.yellow);
-    amber2 = Target(index: 15, color: c.amber);
-    yellow2 = Target(index: 23, color: c.yellow);
+    lima = Target(index: 8, color: c.lima);
+    lima300 = Target(index: 9, color: c.lima300);
+    lima700 = Target(index: 7, color: c.lima700);
+    jungle = Target(index: 12, color: c.jungle);
+    jungle300 = Target(index: 13, color: c.jungle300);
+    jungle700 = Target(index: 11, color: c.jungle700);
+    violet = Target(index: 15, color: c.violet);
+    violet300 = Target(index: 16, color: c.violet300);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 9;
+    g.level.value = 19;
+
+    //activate second index position
+    g.secondIndex = true;
 
     //passing context
     g.context = context;
@@ -112,7 +85,16 @@ class _Level_9State extends State<Level_9> {
       //initlize the grid size [rows,columns] (must be called)
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
-      g.targets = [amber, white, purple, yellow, amber2, yellow2];
+      g.targets = [
+        jungle300,
+        lima300,
+        jungle,
+        lima700,
+        lima,
+        jungle700,
+        violet,
+        violet300,
+      ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
       //the constant amount between moves (milliseconds)
@@ -126,51 +108,55 @@ class _Level_9State extends State<Level_9> {
       await g.delay();
 
       //movements starts here
-      g.toPath(amber, 9);
-      await g.toPath(amber2, 6);
-      g.toPath(yellow, 11);
-      await g.toPath(yellow2, 20);
-      await g.down(purple);
-      await g.toPath(purple, 24);
-      g.toPath(yellow, 0);
-      await g.down(white);
-      await g.toPath(white, 16);
-      //g.toPath(amber, 1);
-      await g.toPath(amber2, 12);
-      await g.up(purple);
-      await g.up(purple);
-      await g.toPath(amber2, 22);
-      g.toPath(amber, 3);
-      await g.toPath(purple, 2);
-      g.toPath(yellow2, 0);
-      await g.down(yellow);
-      await g.toPath(yellow, 13, lastMove: true);
 
-      //setState must be called to render the list (FOR SOME REASON !!!!!)
-      setState(() {});
+      lima700.secondIndex = lima700.initIndex - columnSize;
+      lima.secondIndex = lima.initIndex + 1;
+      lima300.secondIndex = lima300.initIndex + columnSize;
+      jungle700.secondIndex = jungle700.initIndex - columnSize;
+      jungle.secondIndex = jungle.initIndex + 1;
+      jungle300.secondIndex = jungle300.initIndex + columnSize;
+      violet.secondIndex = violet.initIndex - columnSize;
+      violet300.secondIndex = violet300.initIndex + columnSize;
+
+      g.up(lima700);
+      g.up(jungle700);
+      await g.delay(duration: 300);
+
+      g.down(lima300);
+      await g.down(jungle300);
+
+      await g.delay(duration: 300);
+
+      g.right(lima);
+      await g.right(jungle);
+
+      g.up(violet);
+      await g.down(violet300);
+
+      await g.up(lima);
+
+      g.toPath(lima700, 22);
+      await g.down(lima300);
+
+      await g.down(lima300);
+
+      g.toPath(lima, 0);
+      await g.toPath(lima300, 23);
+
+      g.toGivenPath(jungle, [8, 9, 4, 3, 2]);
+      await g.toGivenPath(jungle700, [11, 12]);
+
+      g.toGivenPath(violet, [5, 6, 7]);
+      await g.toGivenPath(violet300, [16, 17]);
+
+      g.right(lima);
+      await g.toGivenPath(lima300, [18, 13], lastMove: true);
 
       //post frame callback end
     });
 
     super.initState();
   }
-
-  // String colorChange(
-  //     {required String currentColor,
-  //     required String newColor,
-  //     required int duration}) {
-  //   Future.delayed(
-  //     Duration(milliseconds: duration),
-  //     () {
-  //       for (int i = 0; i < _fruits.length; i++) {
-  //         if (_fruits[i][1] == currentColor) {
-  //           _fruits[i][1] = newColor;
-  //         }
-  //       }
-  //     },
-  //   );
-  //   return newColor;
-  // }
 
   @override
   void dispose() {
@@ -195,9 +181,9 @@ class _Level_9State extends State<Level_9> {
             appBar: AppBarBuild(
               appBarBackToMenu: () => square.appBarBackToMenu(context),
               textColor: c.textColor,
+              title: "Level ${g.level}",
               unlockFlag: g.unlockFlag.value,
               coins: square.db.coins,
-              title: "Level ${g.level}",
             ),
             backgroundColor: Colors.transparent,
             body: MainGrid(
@@ -205,6 +191,8 @@ class _Level_9State extends State<Level_9> {
               padding: const EdgeInsets.all(23),
               unlockColor: c.unlockColor,
               lockColor: c.lockColor,
+              canChange: false,
+              position: CustomIcons.circle_2,
               onReorderList: g.onListReorder,
               unlockFlag: g.unlockFlag.value,
               textColor: c.textColor,

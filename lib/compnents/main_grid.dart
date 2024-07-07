@@ -1,3 +1,4 @@
+import 'package:Squareo/compnents/custom_icons.dart';
 import 'package:Squareo/utils/square.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_reorderable_grid_view/entities/order_update_entity.dart';
@@ -26,6 +27,7 @@ class MainGrid extends StatelessWidget {
     required this.padding,
     required this.borderRadius,
     this.canChange = false,
+    this.position = CustomIcons.circle_1,
   })  : _scrollController = scrollController,
         _gridViewKey = gridViewKey;
 
@@ -44,6 +46,7 @@ class MainGrid extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final double borderRadius;
   bool canChange = false;
+  final IconData position;
   Square square = Square();
 
   @override
@@ -59,6 +62,7 @@ class MainGrid extends StatelessWidget {
           unlockFlag: unlockFlag,
           textColor: textColor,
           canChange: canChange,
+          position: position,
         ),
         Container(
           //if platform is web

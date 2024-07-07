@@ -9,6 +9,9 @@ import 'package:Squareo/pages/levels/levels_11_20/level_14.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_15.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_16.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_17.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_18.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_19.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_20.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -1542,6 +1545,15 @@ class Square {
     }
     if (index == 17) {
       Get.offAll(() => Level_17(), transition: Transition.size);
+    }
+    if (index == 18) {
+      Get.offAll(() => Level_18(), transition: Transition.size);
+    }
+    if (index == 19) {
+      Get.offAll(() => Level_19(), transition: Transition.size);
+    }
+    if (index == 20) {
+      Get.offAll(() => Level_20(), transition: Transition.size);
     }
   }
 

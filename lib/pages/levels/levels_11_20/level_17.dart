@@ -121,9 +121,7 @@ class _Level_17State extends State<Level_17> {
 
       g.colorSwitch(lightBlue700, cyan700);
       g.up(indigo);
-      await g.up(lightBlue300);
-
-      await g.to(lightBlue700, lightBlue700.index, lastMove: true);
+      await g.up(lightBlue300, lastMove: true);
 
       //post frame callback end
     });

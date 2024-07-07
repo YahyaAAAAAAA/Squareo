@@ -6,6 +6,9 @@ import 'package:Squareo/pages/levels/levels_11_20/level_14.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_15.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_16.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_17.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_18.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_19.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_20.dart';
 import 'package:Squareo/pages/scores_page.dart';
 import 'package:Squareo/utils/square.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -349,6 +352,27 @@ class _LevelsPageState extends State<LevelsPage> {
     if (index == 6) {
       if (square.db.levelsUnlock[16]) {
         Get.offAll(() => Level_17(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 10);
+      }
+    }
+    if (index == 7) {
+      if (square.db.levelsUnlock[17]) {
+        Get.offAll(() => Level_18(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 10);
+      }
+    }
+    if (index == 8) {
+      if (square.db.levelsUnlock[18]) {
+        Get.offAll(() => Level_19(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 10);
+      }
+    }
+    if (index == 9) {
+      if (square.db.levelsUnlock[19]) {
+        Get.offAll(() => Level_20(), transition: Transition.size);
       } else {
         showScaffoldMessenger(index + 10);
       }
