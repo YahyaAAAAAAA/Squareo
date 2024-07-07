@@ -7,7 +7,8 @@ import 'package:Squareo/pages/levels/levels_11_20/level_12.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_13.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_14.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_15.dart';
-import 'package:Squareo/state/target_controller.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_16.dart';
+import 'package:Squareo/pages/levels/levels_11_20/level_17.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -57,7 +58,7 @@ class Square {
   bool unlockFlag = false;
 
   //! total levels made (currently 12) change till 30
-  int totalLevels = 15;
+  int totalLevels = 17;
 
   //for comparing best grade
   List<String> grades = [
@@ -522,7 +523,6 @@ class Square {
 
   //method to go back to menu called by multiable widgets,methods
   void backToMenu(BuildContext context) {
-    Get.delete<TargetsController>();
     Get.offAll(() => LevelsPage(), transition: Transition.size);
   }
 
@@ -1492,8 +1492,6 @@ class Square {
   //! changed with every level added
   //method to move to the next level in order (not completed till being done with every level) .
   void nextLevel(BuildContext context, int index) {
-    hiveDataCheck();
-    Get.delete<TargetsController>();
     if (index == 1) {
       Get.offAll(() => Level_1(), transition: Transition.size);
     }
@@ -1538,6 +1536,12 @@ class Square {
     }
     if (index == 15) {
       Get.offAll(() => Level_15(), transition: Transition.size);
+    }
+    if (index == 16) {
+      Get.offAll(() => Level_16(), transition: Transition.size);
+    }
+    if (index == 17) {
+      Get.offAll(() => Level_17(), transition: Transition.size);
     }
   }
 

@@ -231,15 +231,23 @@ class CustomColors {
   ];
 
   //squares colors , (in strings cuz i'm scared of Hive)
-  Color c = const Color(0xFF673AB7);
-  Color cc = const Color(0xFF9575CD);
-  Color ccc = const Color(0xFF512DA8);
+  Color c = const Color(0xFF03A9F4);
+  Color cc = const Color(0xFF4FC3F7);
+  Color ccc = const Color(0xFF0288D1);
 
-  Color cccc = Colors.purple;
-  Color ccccc = Colors.purple.shade300;
-  Color cccccc = Colors.purple.shade700;
+  Color cccc = const Color(0xFF3F51B5);
+  Color ccccc = const Color(0xFF7986CB);
+  Color cccccc = const Color(0xFF303F9F);
 
   RxString wrongColor = "0xFFE3D3D3".obs;
+
+  RxString lightBlue = "0xFF03A9F4 ".obs;
+  RxString lightBlue300 = "0xFF4FC3F7 ".obs;
+  RxString lightBlue700 = "0xFF0288D1 ".obs;
+
+  RxString indigo = "0xFF3F51B5 ".obs;
+  RxString indigo300 = "0xFF7986CB ".obs;
+  RxString indigo700 = "0xFF303F9F ".obs;
 
   RxString deepPurple = "0xFF673AB7 ".obs;
   RxString deepPurple300 = "0xFF9575CD ".obs;
@@ -259,6 +267,7 @@ class CustomColors {
 
   RxString yellow = "0xFFFFEB3B".obs;
   RxString yellowAccent = "0xFFFFFF00".obs;
+  RxString yellowAccent400 = "0xFFFFEA00".obs;
   RxString yellow200 = "0xFFFFF176".obs;
 
   RxString purple = "0xFF9C27B0".obs;
