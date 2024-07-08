@@ -180,19 +180,19 @@ class _ScoresPageState extends State<ScoresPage> {
             return lockedLevels
                 ? Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Row(
+                    child: Wrap(
+                      alignment: WrapAlignment.center,
                       children: [
                         levelsCircleAvatar(index, false),
-                        SizedBox(width: 20),
-                        Expanded(
-                          child: Container(
-                              padding: EdgeInsets.all(20),
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade300.withOpacity(0.7),
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              child: Text('')),
-                        ),
+                        SizedBox(width: 20, height: 50),
+                        Container(
+                            width: 350,
+                            padding: EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300.withOpacity(0.7),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text('')),
                       ],
                     ),
                   )
@@ -200,120 +200,100 @@ class _ScoresPageState extends State<ScoresPage> {
           } else {
             return Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Row(
+              child: Wrap(
+                alignment: WrapAlignment.center,
                 children: [
                   levelsCircleAvatar(index, true),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        color: c.mainColor1.withOpacity(0.6),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Icon(
-                              CustomIcons.duration_alt,
+                  SizedBox(width: 20, height: 70),
+                  Container(
+                    width: 350,
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: c.mainColor1.withOpacity(0.6),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Icon(
+                            CustomIcons.duration_alt,
+                            color: c.textColor,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            'Time : ${square.db.scores[index][0]}',
+                            style: TextStyle(
                               color: c.textColor,
-                              size: 20,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Abel',
                             ),
-                            const SizedBox(width: 10),
-                            Text(
-                              'Time : ${square.db.scores[index][0]}',
-                              style: TextStyle(
-                                color: c.textColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Abel',
-                              ),
-                            ),
-                            const SizedBox(width: 15),
-                            Icon(
-                              CustomIcons.shoe_prints,
+                          ),
+                          const SizedBox(width: 15),
+                          Icon(
+                            CustomIcons.shoe_prints,
+                            color: c.textColor,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          Text(
+                            'Moves : ${square.db.scores[index][1]}',
+                            style: TextStyle(
                               color: c.textColor,
-                              size: 20,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Abel',
                             ),
-                            const SizedBox(width: 10),
-                            Text(
-                              'Moves : ${square.db.scores[index][1]}',
-                              style: TextStyle(
-                                color: c.textColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Abel',
-                              ),
-                            ),
-                            const SizedBox(width: 15),
-                            Icon(
-                              CustomIcons.splotch,
-                              color: c.textColor,
-                              size: 20,
-                            ),
-                            const SizedBox(width: 10),
-                            square.db.scores[index][2] == 'A+'
-                                //if grade is A+
-                                ? CustomPopup(
-                                    backgroundColor: c.bgSheetColor,
-                                    arrowColor: c.bgSheetColor,
-                                    content: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(
-                                          CustomIcons.motivation,
-                                          color: square.db.scores[index][3] == 1
-                                              ? const Color.fromARGB(
-                                                  255, 247, 113, 135)
-                                              : const Color(0xFFFFD700),
-                                          size: 32,
-                                        ),
-                                        const SizedBox(width: 10),
-                                        GradientText(
-                                          square.db.scores[index][3] == 1
-                                              ? "In ${square.db.scores[index][3].toString()} Attempt"
-                                              : "In ${square.db.scores[index][3].toString()} Attempts",
-                                          style: TextStyle(
-                                            color: c.bgSheetColor,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20,
-                                            fontFamily: 'Abel',
-                                          ),
-                                          gradient: LinearGradient(
-                                            colors:
-                                                square.db.scores[index][3] == 1
-                                                    ? c.aPlusTries
-                                                    : c.aPlus,
-                                          ),
-                                          children: [],
-                                        ),
-                                      ],
-                                    ),
-                                    child: GradientText(
-                                      square.db.scores[index][2],
-                                      style: TextStyle(
-                                        color: c.textColor,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                        fontFamily: 'PlaywritePL',
+                          ),
+                          const SizedBox(width: 15),
+                          Icon(
+                            CustomIcons.splotch,
+                            color: c.textColor,
+                            size: 20,
+                          ),
+                          const SizedBox(width: 10),
+                          square.db.scores[index][2] == 'A+'
+                              //if grade is A+
+                              ? CustomPopup(
+                                  backgroundColor: c.bgSheetColor,
+                                  arrowColor: c.bgSheetColor,
+                                  content: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        CustomIcons.motivation,
+                                        color: square.db.scores[index][3] == 1
+                                            ? const Color.fromARGB(
+                                                255, 247, 113, 135)
+                                            : const Color(0xFFFFD700),
+                                        size: 32,
                                       ),
-                                      gradient: LinearGradient(
-                                        colors: square.db.scores[index][2] ==
-                                                    'A+' &&
-                                                square.db.scores[index][3] == 1
-                                            ? c.aPlusTries
-                                            : square.db.scores[index][2] == 'A+'
-                                                ? c.aPlus
-                                                : c.gradesColor,
+                                      const SizedBox(width: 10),
+                                      GradientText(
+                                        square.db.scores[index][3] == 1
+                                            ? "In ${square.db.scores[index][3].toString()} Attempt"
+                                            : "In ${square.db.scores[index][3].toString()} Attempts",
+                                        style: TextStyle(
+                                          color: c.bgSheetColor,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                          fontFamily: 'Abel',
+                                        ),
+                                        gradient: LinearGradient(
+                                          colors:
+                                              square.db.scores[index][3] == 1
+                                                  ? c.aPlusTries
+                                                  : c.aPlus,
+                                        ),
+                                        children: [],
                                       ),
-                                      children: [],
-                                    ),
-                                  )
-                                //if grade not A+
-                                : GradientText(
+                                    ],
+                                  ),
+                                  child: GradientText(
                                     square.db.scores[index][2],
                                     style: TextStyle(
                                       color: c.textColor,
@@ -322,14 +302,34 @@ class _ScoresPageState extends State<ScoresPage> {
                                       fontFamily: 'PlaywritePL',
                                     ),
                                     gradient: LinearGradient(
-                                      colors: square.db.scores[index][2] == 'A+'
-                                          ? c.aPlus
-                                          : c.gradesColor,
+                                      colors: square.db.scores[index][2] ==
+                                                  'A+' &&
+                                              square.db.scores[index][3] == 1
+                                          ? c.aPlusTries
+                                          : square.db.scores[index][2] == 'A+'
+                                              ? c.aPlus
+                                              : c.gradesColor,
                                     ),
                                     children: [],
                                   ),
-                          ],
-                        ),
+                                )
+                              //if grade not A+
+                              : GradientText(
+                                  square.db.scores[index][2],
+                                  style: TextStyle(
+                                    color: c.textColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                    fontFamily: 'PlaywritePL',
+                                  ),
+                                  gradient: LinearGradient(
+                                    colors: square.db.scores[index][2] == 'A+'
+                                        ? c.aPlus
+                                        : c.gradesColor,
+                                  ),
+                                  children: [],
+                                ),
+                        ],
                       ),
                     ),
                   ),

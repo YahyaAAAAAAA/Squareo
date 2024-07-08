@@ -92,7 +92,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Drawer(
         backgroundColor: c.bgSheetColor,
-        width: MediaQuery.of(context).size.width / 2,
+        width: 448 / 2,
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(

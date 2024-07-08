@@ -9,6 +9,7 @@ import 'package:Squareo/pages/levels/levels_11_20/level_17.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_18.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_19.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_20.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_21.dart';
 import 'package:Squareo/pages/scores_page.dart';
 import 'package:Squareo/utils/square.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -380,7 +381,15 @@ class _LevelsPageState extends State<LevelsPage> {
   }
 
   //method for entering levels from 21 to 30 , shouldn't be changed
-  void levels_21_30(int index) {}
+  void levels_21_30(int index) {
+    if (index == 0) {
+      if (square.db.levelsUnlock[20]) {
+        Get.offAll(() => Level_21(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 20);
+      }
+    }
+  }
 
   /// the [containers n_m] method should be copied with [numbers_n_m] when new set of levels are added and changed accordingly
   /// both methods are part of the ui (prolly there's a better way to do this 💀) and shouldn't be changed.

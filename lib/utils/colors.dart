@@ -10,7 +10,7 @@ class CustomColors {
   }
 
   //bg colors
-  Color mainColor1 = const Color(0xFF363C3F).withOpacity(0.5);
+  Color mainColor1 = const Color(0xFF3F3E36).withOpacity(0.5);
 
   Color mainColor2 = const Color.fromARGB(255, 41, 46, 48);
 

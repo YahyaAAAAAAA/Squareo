@@ -12,6 +12,7 @@ import 'package:Squareo/pages/levels/levels_11_20/level_17.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_18.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_19.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_20.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_21.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -184,6 +185,7 @@ class Square {
       context: context,
       barrierDismissible: barrierDismiss,
       transitionBuilder: (context, a1, a2, widget) {
+        print(MediaQuery.of(context).size.width / 1.2);
         return Transform.scale(
           scale: a1.value,
           child: Opacity(
@@ -197,7 +199,7 @@ class Square {
                 ),
                 child: Container(
                   height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width / 1.2,
+                  width: 373,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: Colors.transparent,
@@ -948,12 +950,12 @@ class Square {
           scale: a1.value,
           child: Opacity(
             opacity: a1.value,
-            child: Dialog(
+            child: AlertDialog(
               backgroundColor: Colors.transparent,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4),
               ),
-              child: Container(
+              content: Container(
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: c.mainColor2,
@@ -1147,12 +1149,12 @@ class Square {
           scale: a1.value,
           child: Opacity(
             opacity: a1.value,
-            child: Dialog(
+            child: AlertDialog(
               backgroundColor: Colors.transparent,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4),
               ),
-              child: Container(
+              content: Container(
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: c.mainColor2,
@@ -1554,6 +1556,9 @@ class Square {
     }
     if (index == 20) {
       Get.offAll(() => Level_20(), transition: Transition.size);
+    }
+    if (index == 21) {
+      Get.offAll(() => Level_21(), transition: Transition.size);
     }
   }
 

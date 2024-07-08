@@ -147,7 +147,9 @@ class TargetsController extends GetxController {
   //change indiviual targets color
   Future<void> colorChange(String newColor, Target t) async {
     //sound
-    square.playSound('water');
+    if (newColor != c.wrongColor.value) {
+      square.playSound('water');
+    }
 
     //update the color for win condition
     t.color.value = newColor;
@@ -347,15 +349,25 @@ class TargetsController extends GetxController {
     int goal, {
     bool lastMove = false,
     String color = '',
+    bool canFlick = false,
   }) async {
     List<int> path =
         breadthFirst.bfs(t.index, goal, gridSize[0], gridSize[1]).cast<int>();
-
+    String wrongC = c.wrongColor.value;
+    String currentC = t.color.value;
     for (int i = 0; i < path.length; i++) {
       //color change
       if (color != '') {
         if (i == (path.length / 2).floor()) {
           colorChange(color, t);
+        }
+      }
+      //color flick between current color and wrong color
+      if (canFlick) {
+        if (i == 1 || i == path.length - 1) {
+          colorChange(currentC, t);
+        } else {
+          colorChange(wrongC, t);
         }
       }
       //moves

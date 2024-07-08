@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:Squareo/pages/home_page.dart';
+import 'package:flutter/services.dart';
 
 void main() async {
   //init the Hive
@@ -19,9 +20,14 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    //set orientations
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.portraitUp,
+    ]);
+    //root
     return GetMaterialApp(
       home: HomePage(),
       theme: ThemeData(

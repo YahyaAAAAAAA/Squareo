@@ -39,6 +39,9 @@ class _SettingsPageState extends State<SettingsPage> {
   //used to calculate the progress of the player in %
   double percenatgeCounter = 0;
 
+  //fixed min width
+  double rowWidth = 448;
+
   //see initState
   late Color previewContainerColor;
 
@@ -231,7 +234,7 @@ class _SettingsPageState extends State<SettingsPage> {
         lineThrow(context, 'Choose the square shape'.length.toDouble() * 10),
         SizedBox(height: 10),
         Container(
-          width: MediaQuery.of(context).size.width,
+          width: rowWidth,
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: c.mainColor1.withOpacity(0.6),
@@ -362,7 +365,7 @@ class _SettingsPageState extends State<SettingsPage> {
         lineThrow(context, 'Choose the square face'.length.toDouble() * 10),
         SizedBox(height: 10),
         Container(
-          width: MediaQuery.of(context).size.width,
+          width: rowWidth,
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: c.mainColor1.withOpacity(0.6),
@@ -601,7 +604,7 @@ class _SettingsPageState extends State<SettingsPage> {
         lineThrow(context, 'Choose the square border'.length.toDouble() * 10),
         SizedBox(height: 10),
         Container(
-          width: MediaQuery.of(context).size.width,
+          width: rowWidth,
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: c.mainColor1.withOpacity(0.6),
@@ -654,7 +657,7 @@ class _SettingsPageState extends State<SettingsPage> {
             context, 'Choose the square border radius'.length.toDouble() * 10),
         SizedBox(height: 10),
         Container(
-          width: MediaQuery.of(context).size.width,
+          width: rowWidth,
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             color: c.mainColor1.withOpacity(0.6),
