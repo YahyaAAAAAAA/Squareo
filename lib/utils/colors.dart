@@ -317,6 +317,9 @@ class CustomColors {
   RxString pink300 = "0xFFF06292".obs;
   RxString pink700 = "0xFFC2185B".obs;
 
-  RxString black = "0xFF5B5B5B".obs;
+  RxString black = "0xFF404040".obs;
+  RxString black300 = "0xFF5B5B5B".obs;
+  RxString black700 = "0xFF242424".obs;
+
   RxString turquoise = "0xFF40E0D0".obs;
 }

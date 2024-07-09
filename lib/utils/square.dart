@@ -13,6 +13,7 @@ import 'package:Squareo/pages/levels/levels_11_20/level_18.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_19.dart';
 import 'package:Squareo/pages/levels/levels_11_20/level_20.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_21.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_22.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -185,7 +186,6 @@ class Square {
       context: context,
       barrierDismissible: barrierDismiss,
       transitionBuilder: (context, a1, a2, widget) {
-        print(MediaQuery.of(context).size.width / 1.2);
         return Transform.scale(
           scale: a1.value,
           child: Opacity(
@@ -1559,6 +1559,9 @@ class Square {
     }
     if (index == 21) {
       Get.offAll(() => Level_21(), transition: Transition.size);
+    }
+    if (index == 22) {
+      Get.offAll(() => Level_22(), transition: Transition.size);
     }
   }
 

@@ -10,14 +10,14 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_21 extends StatefulWidget {
-  const Level_21({super.key});
+class Level_22 extends StatefulWidget {
+  const Level_22({super.key});
 
   @override
-  State<Level_21> createState() => _Level_21State();
+  State<Level_22> createState() => _Level_22State();
 }
 
-class _Level_21State extends State<Level_21> {
+class _Level_22State extends State<Level_22> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
@@ -59,7 +59,7 @@ class _Level_21State extends State<Level_21> {
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 21;
+    g.level.value = 22;
 
     //activate second index position
     g.secondIndex = false;
@@ -95,29 +95,12 @@ class _Level_21State extends State<Level_21> {
       await g.delay();
 
       //movements starts here
-
-      g.colorChange(c.red.value, red);
-      await g.delay(duration: 700);
-
-      g.colorChange(c.yellow.value, yellow);
-      g.toGivenPath(red, [3, 2, 1, 6, 5]);
-      await g.toGivenPath(yellow, [19, 18, 17, 12, 11]);
-
-      g.colorChange(c.blue.value, blue);
-      await g.toGivenPath(blue, [22, 17, 12, 7, 2]);
-
-      g.colorChange(c.green.value, green);
-      g.colorChange(c.indigo.value, indigo);
-      await g.toGivenPath(green, [17, 18, 19, 14, 9]);
-
-      await g.toGivenPath(indigo, [1, 6, 7, 12, 17]);
-
-      g.colorChange(c.orange.value, orange);
-      g.down(orange);
-      await g.down(yellow);
-
-      g.left(green);
-      await g.right(red, lastMove: true);
+      g.colorChange(c.black.value, red);
+      await g.delay(duration: 500);
+      g.colorChange(c.black700.value, orange);
+      await g.delay(duration: 500);
+      g.colorChange(c.black300.value, yellow);
+      await g.to(red, red.index, lastMove: true);
 
       //post frame callback end
     });

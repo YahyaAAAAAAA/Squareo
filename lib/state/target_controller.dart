@@ -217,7 +217,7 @@ class TargetsController extends GetxController {
   //* Movements methods below
 
   //makes target go UP 🙄 ⬆
-  Future up(Target target, {bool lastMove = false, bool same = false}) async {
+  Future up(Target target, {bool lastMove = false}) async {
     //incase same is true , save init value
     var initDuration = duration.value;
 
@@ -243,7 +243,7 @@ class TargetsController extends GetxController {
   }
 
   //makes target go DOWN 😌 ⬇
-  Future down(Target target, {bool lastMove = false, bool same = false}) async {
+  Future down(Target target, {bool lastMove = false}) async {
     //incase same is true , save init value
     var initDuration = duration.value;
 
@@ -269,7 +269,7 @@ class TargetsController extends GetxController {
   }
 
   //makes target go RIGHT 😒 ➡
-  Future right(Target target, {bool lastMove = false, bool sam = false}) async {
+  Future right(Target target, {bool lastMove = false}) async {
     //incase same is true , save init value
     var initDuration = duration.value;
 
@@ -295,7 +295,7 @@ class TargetsController extends GetxController {
   }
 
   //makes target go LEFT 😏 ⬅
-  Future left(Target target, {bool lastMove = false, bool same = false}) async {
+  Future left(Target target, {bool lastMove = false}) async {
     //incase same is true , save init value
     var initDuration = duration.value;
 
@@ -321,8 +321,7 @@ class TargetsController extends GetxController {
   }
 
   //moves target to another location (called with Breadth first algo) 😊
-  Future to(Target target, int to,
-      {bool lastMove = false, bool same = false}) async {
+  Future to(Target target, int to, {bool lastMove = false}) async {
     //incase same is true , save init value
     var initDuration = duration.value;
 
@@ -353,15 +352,11 @@ class TargetsController extends GetxController {
   }) async {
     List<int> path =
         breadthFirst.bfs(t.index, goal, gridSize[0], gridSize[1]).cast<int>();
+
     String wrongC = c.wrongColor.value;
     String currentC = t.color.value;
+
     for (int i = 0; i < path.length; i++) {
-      //color change
-      if (color != '') {
-        if (i == (path.length / 2).floor()) {
-          colorChange(color, t);
-        }
-      }
       //color flick between current color and wrong color
       if (canFlick) {
         if (i == 1 || i == path.length - 1) {
@@ -370,6 +365,15 @@ class TargetsController extends GetxController {
           colorChange(wrongC, t);
         }
       }
+
+      //color change
+      if (color != '') {
+        if (i == (path.length / 2).floor()) {
+          currentC = color;
+          colorChange(color, t);
+        }
+      }
+
       //moves
       await to(t, path[i],
           lastMove: ((i == path.length - 1) && lastMove) ? true : false);

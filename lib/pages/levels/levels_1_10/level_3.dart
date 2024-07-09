@@ -87,10 +87,10 @@ class _Level_3State extends State<Level_3> {
 
       //movements starts here
       await g.down(green);
-      await g.up(blue, same: true);
+      await g.up(blue);
       await g.right(green);
       await g.down(yellow);
-      await g.down(green, same: true);
+      await g.down(green);
       await g.right(green, lastMove: true);
 
       //post frame callback end
