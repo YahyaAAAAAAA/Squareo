@@ -10,14 +10,14 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_22 extends StatefulWidget {
-  const Level_22({super.key});
+class Level_23 extends StatefulWidget {
+  const Level_23({super.key});
 
   @override
-  State<Level_22> createState() => _Level_22State();
+  State<Level_23> createState() => _Level_23State();
 }
 
-class _Level_22State extends State<Level_22> {
+class _Level_23State extends State<Level_23> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
@@ -37,31 +37,33 @@ class _Level_22State extends State<Level_22> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target yellowAccent400;
-  late Target black700;
-  late Target black300;
-  late Target black;
-  late Target yellowAccent;
-  late Target purple700;
-  late Target purple;
+  late Target loch700;
+  late Target turq700;
+  late Target turq;
+  late Target turq300;
+  late Target loch;
+  late Target tealAccent;
+  late Target teal;
+  late Target tealAccent300;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    black700 = Target(index: 2, color: "0xFFE3D3D3".obs);
-    purple700 = Target(index: 6, color: "0xFFE3D3D3".obs);
-    black300 = Target(index: 8, color: "0xFFE3D3D3".obs);
-    yellowAccent400 = Target(index: 10, color: "0xFFE3D3D3".obs);
-    purple = Target(index: 14, color: "0xFFE3D3D3".obs);
-    black = Target(index: 16, color: "0xFFE3D3D3".obs);
-    yellowAccent = Target(index: 18, color: "0xFFE3D3D3".obs);
+    turq300 = Target(index: 4, color: "0xFFE3D3D3".obs);
+    turq = Target(index: 8, color: "0xFFE3D3D3".obs);
+    turq700 = Target(index: 13, color: "0xFFE3D3D3".obs);
+    tealAccent300 = Target(index: 6, color: "0xFFE3D3D3".obs);
+    tealAccent = Target(index: 12, color: "0xFFE3D3D3".obs);
+    teal = Target(index: 17, color: "0xFFE3D3D3".obs);
+    loch700 = Target(index: 16, color: "0xFFE3D3D3".obs);
+    loch = Target(index: 20, color: "0xFFE3D3D3".obs);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 22;
+    g.level.value = 23;
 
     //activate second index position
     g.secondIndex = false;
@@ -84,13 +86,14 @@ class _Level_22State extends State<Level_22> {
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
       g.targets = [
-        black300,
-        yellowAccent400,
-        black700,
-        black,
-        yellowAccent,
-        purple700,
-        purple
+        turq,
+        loch700,
+        turq700,
+        turq300,
+        loch,
+        tealAccent,
+        teal,
+        tealAccent300,
       ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
@@ -105,39 +108,42 @@ class _Level_22State extends State<Level_22> {
       await g.delay();
 
       //movements starts here
-      g.colorChange(c.black.value, black);
-      await g.delay(duration: 500);
 
-      g.colorChange(c.black300.value, black300);
-      g.toGivenPath(black300, [9, 4, 3, 8, 7, 12]);
-      await g.toGivenPath(black, [11, 12, 17, 22, 21, 20]);
+      g.colorChange(c.tealAccent300.value, tealAccent300);
+      await g.delay(duration: 100);
+      g.colorChange(c.teal.value, teal);
+      await g.delay(duration: 100);
+      g.colorChange(c.turquoise700.value, turq700);
 
-      g.colorChange(c.yellowAccent.value, yellowAccent);
-      await g.delay(duration: 500);
+      g.down(teal);
+      g.colorChange(c.turquoise300.value, turq300);
+      g.colorChange(c.lochinvar.value, loch);
+      g.toPath(loch, 5);
+      g.toPath(turq300, 1);
+      await g.right(turq700);
 
-      g.colorChange(c.yellowAccent400.value, yellowAccent400);
-      g.toGivenPath(yellowAccent400, [11, 16, 15]);
-      await g.toGivenPath(yellowAccent, [19, 24, 23]);
+      await g.delay(duration: 1000);
 
-      g.colorChange(c.purple700.value, purple700);
-      await g.delay(duration: 500);
+      g.colorChange(c.lochinvar700.value, loch700);
+      await g.delay(duration: 100);
 
-      g.colorChange(c.purple.value, purple);
-      g.toGivenPath(purple, [13, 8, 9, 4, 3]);
-      await g.toGivenPath(purple700, [5, 0, 1, 6, 7]);
+      g.colorChange(c.tealAccent.value, tealAccent);
+      await g.delay(duration: 100);
 
-      g.colorChange(c.black700.value, black700);
-      g.right(black);
-      g.right(black300);
-      await g.toGivenPath(black700, [1, 0, 5, 10, 11, 16, 17]);
+      g.colorChange(c.turquoise.value, turq);
+      await g.delay(duration: 200);
 
-      g.right(yellowAccent);
-      g.right(purple);
-      g.left(purple700);
-      g.up(black);
-      g.up(black300);
-      g.up(black700);
-      await g.down(yellowAccent400, lastMove: true);
+      g.toGivenPath(loch700, [15, 20]);
+      await g.toGivenPath(turq, [3, 4]);
+
+      g.toGivenPath(turq700, [9, 8]);
+      g.toGivenPath(teal, [21, 16]);
+      await g.toGivenPath(tealAccent, [17, 18, 23, 24]);
+
+      await g.toGivenPath(tealAccent300, [11, 12]);
+
+      g.right(turq300);
+      await g.down(loch, lastMove: true);
 
       //post frame callback end
     });

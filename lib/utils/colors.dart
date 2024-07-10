@@ -231,7 +231,8 @@ class CustomColors {
   ];
 
   //squares colors , (in strings cuz i'm scared of Hive)
-  // Color c = Colors.
+  Color c = const Color(0xFF1DE9B6);
+  Color cc = const Color(0xFF00BFA5);
 
   RxString wrongColor = "0xFFE3D3D3".obs;
 
@@ -276,9 +277,10 @@ class CustomColors {
   RxString blue700 = "0xFF1976D2".obs;
 
   RxString yellow = "0xFFFFEB3B".obs;
+  RxString yellow200 = "0xFFFFF176".obs;
+
   RxString yellowAccent = "0xFFFFFF00".obs;
   RxString yellowAccent400 = "0xFFFFEA00".obs;
-  RxString yellow200 = "0xFFFFF176".obs;
 
   RxString purple = "0xFF9C27B0".obs;
   RxString purple300 = "0xFFBA68C8".obs;
@@ -291,7 +293,10 @@ class CustomColors {
   RxString teal = "0xFF009688".obs;
   RxString teal300 = "0xFF4DB6AC".obs;
   RxString teal700 = "0xFF00796B".obs;
+
   RxString tealAccent = "0xFF64FFDA".obs;
+  RxString tealAccent300 = "0xFF1DE9B6".obs;
+  RxString tealAccent700 = "0xFF00BFA5".obs;
 
   RxString red = "0xFFF44336".obs;
   RxString red300 = "0xFFE57373".obs;
@@ -322,4 +327,9 @@ class CustomColors {
   RxString black700 = "0xFF242424".obs;
 
   RxString turquoise = "0xFF40E0D0".obs;
+  RxString turquoise700 = "0xFF2D9D92".obs;
+  RxString turquoise300 = "0xFF79E9DE".obs;
+
+  RxString lochinvar = "0xFF77A09C".obs;
+  RxString lochinvar700 = "0xFF1C615A".obs;
 }
