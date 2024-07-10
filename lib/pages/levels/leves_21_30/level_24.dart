@@ -1,3 +1,4 @@
+import 'package:Squareo/compnents/custom_icons.dart';
 import 'package:Squareo/models/target.dart';
 import 'package:Squareo/state/target_controller.dart';
 import 'package:flutter/material.dart';
@@ -9,14 +10,14 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_12 extends StatefulWidget {
-  const Level_12({super.key});
+class Level_24 extends StatefulWidget {
+  const Level_24({super.key});
 
   @override
-  State<Level_12> createState() => _Level_12State();
+  State<Level_24> createState() => _Level_24State();
 }
 
-class _Level_12State extends State<Level_12> {
+class _Level_24State extends State<Level_24> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
@@ -36,29 +37,36 @@ class _Level_12State extends State<Level_12> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target green300;
-  late Target blue700;
-  late Target green;
-  late Target blue300;
-  late Target blue;
-  late Target green700;
+  late Target neonOrange;
+  late Target neonYellow;
+  late Target neonBlue;
+  late Target neonLightBlue;
+  late Target neonPurple;
+  late Target neonGreen;
+  late Target neonRed;
+  late Target neonPink;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    green300 = Target(index: 0, color: c.green300);
-    blue700 = Target(index: 2, color: c.blue700);
-    green = Target(index: 4, color: c.green);
-    blue300 = Target(index: 11, color: c.blue300);
-    blue = Target(index: 13, color: c.blue);
-    green700 = Target(index: 17, color: c.green700);
+    neonYellow = Target(index: 1, color: "0xFFE3D3D3".obs);
+    neonRed = Target(index: 2, color: "0xFFE3D3D3".obs);
+    neonOrange = Target(index: 3, color: "0xFFE3D3D3".obs);
+    neonGreen = Target(index: 11, color: "0xFFE3D3D3".obs);
+    neonLightBlue = Target(index: 12, color: "0xFFE3D3D3".obs);
+    neonBlue = Target(index: 13, color: "0xFFE3D3D3".obs);
+    neonPink = Target(index: 21, color: "0xFFE3D3D3".obs);
+    neonPurple = Target(index: 23, color: "0xFFE3D3D3".obs);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 12;
+    g.level.value = 24;
+
+    //activate second index position
+    g.secondIndex = false;
 
     //passing context
     g.context = context;
@@ -77,7 +85,16 @@ class _Level_12State extends State<Level_12> {
       //initlize the grid size [rows,columns] (must be called)
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
-      g.targets = [blue700, green, blue300, blue, green300, green700];
+      g.targets = [
+        neonBlue,
+        neonOrange,
+        neonYellow,
+        neonLightBlue,
+        neonPurple,
+        neonGreen,
+        neonRed,
+        neonPink,
+      ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
       //the constant amount between moves (milliseconds)
@@ -92,34 +109,64 @@ class _Level_12State extends State<Level_12> {
 
       //movements starts here
 
-      // blue.secondIndex = blue.initIndex - columnSize;
-
-      g.toPath(green300, 20);
-      await g.toPath(green, 24);
-
-      await g.down(blue700);
-
-      g.toPath(blue300, 0);
-      await g.toPath(blue, 4);
-
-      g.toPath(blue700, 13);
-      await g.toPath(green700, 11);
-
-      g.down(blue700);
-      await g.up(green700);
-
-      g.colorChange(c.red700.value, green700);
+      g.colorChange(c.neonYellow.value, neonYellow);
+      await g.delay(duration: 100);
+      g.colorChange(c.neonLightBlue.value, neonLightBlue);
+      await g.delay(duration: 100);
+      g.colorChange(c.neonPurple.value, neonPurple);
       square.playSound('water');
-      g.right(green700);
-      await g.left(blue700);
+      await g.delay(duration: 100);
 
-      g.toPath(blue, 13);
-      // square.playSound('water');
-      await g.toPath(green300, 11, color: c.red300.value);
+      g.toGivenPath(neonYellow, [0, 5, 10, 15, 16]);
+      await g.toGivenPath(neonPurple, [24, 19, 14, 9, 8]);
 
-      g.toPath(blue300, 2);
-      // square.playSound('water');
-      await g.toPath(green, 22, color: c.red.value, lastMove: true);
+      await g.delay(duration: 500);
+
+      g.colorChange(c.neonOrange.value, neonOrange);
+      square.playSound('water');
+      await g.delay(duration: 100);
+      g.colorChange(c.neonPink.value, neonPink);
+      square.playSound('water');
+      await g.delay(duration: 100);
+      g.toPath(neonPink, 0);
+      await g.toPath(neonOrange, 24);
+
+      await g.delay(duration: 500);
+
+      g.colorChange(c.neonBlue.value, neonBlue);
+      g.colorChange(c.amber.value, neonOrange);
+      square.playSound('water');
+      await g.toGivenPath(neonBlue, [14, 19, 18, 23]);
+
+      await g.delay(duration: 500);
+
+      g.colorChange(c.neonGreen.value, neonGreen);
+      square.playSound('water');
+      await g.toGivenPath(neonGreen, [10, 15, 20]);
+
+      g.colorChange(c.neonRed.value, neonRed);
+      g.colorChange(c.pink300.value, neonPurple);
+      square.playSound('water');
+      g.toGivenPath(neonLightBlue, [11, 10, 5, 6, 1], color: c.pink700.value);
+      await g.toGivenPath(neonRed, [3, 4, 9, 14], color: c.pink.value);
+
+      await g.delay(duration: 300);
+
+      await g.right(neonLightBlue);
+      g.toGivenPath(neonPink, [5, 6]);
+      g.up(neonYellow);
+      g.up(neonGreen);
+      g.colorChange(c.green300.value, neonYellow);
+      g.colorChange(c.green.value, neonPink);
+      square.playSound('water');
+      await g.toGivenPath(neonBlue, [22, 21], color: c.amberAccent.value);
+      await g.right(neonPink);
+
+      await g.left(neonOrange);
+      g.up(neonBlue);
+      g.colorChange(c.green700.value, neonGreen);
+      square.playSound('water');
+      await g.left(neonOrange, lastMove: true);
 
       //post frame callback end
     });
@@ -161,6 +208,7 @@ class _Level_12State extends State<Level_12> {
               unlockColor: c.unlockColor,
               lockColor: c.lockColor,
               canChange: true,
+              position: CustomIcons.circle_1,
               onReorderList: g.onListReorder,
               unlockFlag: g.unlockFlag.value,
               textColor: c.textColor,

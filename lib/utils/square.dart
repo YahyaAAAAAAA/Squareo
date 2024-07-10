@@ -15,6 +15,7 @@ import 'package:Squareo/pages/levels/levels_11_20/level_20.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_21.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_22.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_23.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_24.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -64,7 +65,7 @@ class Square {
   bool unlockFlag = false;
 
   //! total levels made (currently 12) change till 30
-  int totalLevels = 22;
+  int totalLevels = 24;
 
   //for comparing best grade
   List<String> grades = [
@@ -1567,6 +1568,9 @@ class Square {
     if (index == 23) {
       Get.offAll(() => Level_23(), transition: Transition.size);
     }
+    if (index == 24) {
+      Get.offAll(() => Level_24(), transition: Transition.size);
+    }
   }
 
   //calcultes best score (least moves and least time)
@@ -1596,10 +1600,11 @@ class Square {
 
   Future<void> playSound(String sound) async {
     String path = "sounds/$sound.mp3";
+
     await player.play(AssetSource(path));
   }
 
-  //local data levelsList check
+  //local data check
   void hiveDataCheck() {
     if (_myBox.get("LIST") == null) {
       db.createInitialDataList();

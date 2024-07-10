@@ -12,6 +12,7 @@ import 'package:Squareo/pages/levels/levels_11_20/level_20.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_21.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_22.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_23.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_24.dart';
 import 'package:Squareo/pages/scores_page.dart';
 import 'package:Squareo/utils/square.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -401,6 +402,13 @@ class _LevelsPageState extends State<LevelsPage> {
     if (index == 2) {
       if (square.db.levelsUnlock[22]) {
         Get.offAll(() => Level_23(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 20);
+      }
+    }
+    if (index == 3) {
+      if (square.db.levelsUnlock[23]) {
+        Get.offAll(() => Level_24(), transition: Transition.size);
       } else {
         showScaffoldMessenger(index + 20);
       }

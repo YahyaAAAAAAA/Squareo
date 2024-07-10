@@ -106,29 +106,36 @@ class _Level_22State extends State<Level_22> {
 
       //movements starts here
       g.colorChange(c.black.value, black);
+      square.playSound('water');
       await g.delay(duration: 500);
 
       g.colorChange(c.black300.value, black300);
       g.toGivenPath(black300, [9, 4, 3, 8, 7, 12]);
+      square.playSound('water');
       await g.toGivenPath(black, [11, 12, 17, 22, 21, 20]);
 
       g.colorChange(c.yellowAccent.value, yellowAccent);
+      square.playSound('water');
       await g.delay(duration: 500);
 
       g.colorChange(c.yellowAccent400.value, yellowAccent400);
       g.toGivenPath(yellowAccent400, [11, 16, 15]);
+      square.playSound('water');
       await g.toGivenPath(yellowAccent, [19, 24, 23]);
 
       g.colorChange(c.purple700.value, purple700);
+      square.playSound('water');
       await g.delay(duration: 500);
 
       g.colorChange(c.purple.value, purple);
       g.toGivenPath(purple, [13, 8, 9, 4, 3]);
+      square.playSound('water');
       await g.toGivenPath(purple700, [5, 0, 1, 6, 7]);
 
       g.colorChange(c.black700.value, black700);
       g.right(black);
       g.right(black300);
+      square.playSound('water');
       await g.toGivenPath(black700, [1, 0, 5, 10, 11, 16, 17]);
 
       g.right(yellowAccent);

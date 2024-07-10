@@ -91,12 +91,14 @@ class _Level_11State extends State<Level_11> {
       // blue.secondIndex = blue.initIndex - columnSize;
       await g.down(green);
       await g.colorChange(c.blue.value, green);
+      square.playSound('water');
       await g.toPath(green, 20);
 
       await g.colorChange(c.amber.value, tealAccent);
       await g.toPath(tealAccent, 5);
 
       g.colorChange(c.teal.value, yellow);
+      square.playSound('water');
       g.colorChange(c.teal.value, red);
 
       g.toPath(yellow, 21);
@@ -107,6 +109,7 @@ class _Level_11State extends State<Level_11> {
       await g.toPath(tealAccent, 13);
 
       await g.colorChange(c.yellow.value, tealAccent);
+      square.playSound('water');
       await g.left(yellow);
       g.right(green);
       await g.up(red, lastMove: true);

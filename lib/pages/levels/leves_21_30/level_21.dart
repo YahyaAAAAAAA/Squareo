@@ -97,22 +97,27 @@ class _Level_21State extends State<Level_21> {
       //movements starts here
 
       g.colorChange(c.red.value, red);
+      square.playSound('water');
       await g.delay(duration: 700);
 
       g.colorChange(c.yellow.value, yellow);
       g.toGivenPath(red, [3, 2, 1, 6, 5]);
+      square.playSound('water');
       await g.toGivenPath(yellow, [19, 18, 17, 12, 11]);
 
       g.colorChange(c.blue.value, blue);
+      square.playSound('water');
       await g.toGivenPath(blue, [22, 17, 12, 7, 2]);
 
       g.colorChange(c.green.value, green);
       g.colorChange(c.indigo.value, indigo);
+      square.playSound('water');
       await g.toGivenPath(green, [17, 18, 19, 14, 9]);
 
       await g.toGivenPath(indigo, [1, 6, 7, 12, 17]);
 
       g.colorChange(c.orange.value, orange);
+      square.playSound('water');
       g.down(orange);
       await g.down(yellow);
 

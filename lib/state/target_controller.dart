@@ -146,10 +146,7 @@ class TargetsController extends GetxController {
 
   //change indiviual targets color
   Future<void> colorChange(String newColor, Target t) async {
-    //sound
-    if (newColor != c.wrongColor.value) {
-      square.playSound('water');
-    }
+    // square.playSound('water');
 
     //update the color for win condition
     t.color.value = newColor;
@@ -370,6 +367,7 @@ class TargetsController extends GetxController {
       if (color != '') {
         if (i == (path.length / 2).floor()) {
           currentC = color;
+          square.playSound('water');
           colorChange(color, t);
         }
       }
@@ -391,6 +389,7 @@ class TargetsController extends GetxController {
       //color change
       if (color != '') {
         if (i == (path.length / 2).floor()) {
+          square.playSound('water');
           colorChange(color, t);
         }
       }

@@ -231,10 +231,21 @@ class CustomColors {
   ];
 
   //squares colors , (in strings cuz i'm scared of Hive)
-  Color c = const Color(0xFF1DE9B6);
-  Color cc = const Color(0xFF00BFA5);
+  Color c = Colors.brown;
+  Color cc = Colors.brown.shade300;
+  Color ccc = Colors.brown.shade700;
+  Color cccc = Colors.brown.shade900;
 
   RxString wrongColor = "0xFFE3D3D3".obs;
+
+  RxString neonYellow = "0xFFFFFF00".obs;
+  RxString neonRed = "0xFFFF0000".obs;
+  RxString neonGreen = "0xFF00FF00".obs;
+  RxString neonLightBlue = "0xFF00FFFF".obs;
+  RxString neonPink = "0xFFFF00FF".obs;
+  RxString neonPurple = "0xFF9D00FF".obs;
+  RxString neonOrange = "0xFFFF6600".obs;
+  RxString neonBlue = "0xFF0033FF".obs;
 
   RxString lima = "0xFF68BE25".obs;
   RxString lima300 = "0xFF95D266".obs;
