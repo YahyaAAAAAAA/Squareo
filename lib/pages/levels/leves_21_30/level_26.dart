@@ -10,21 +10,21 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_22 extends StatefulWidget {
-  const Level_22({super.key});
+class Level_26 extends StatefulWidget {
+  const Level_26({super.key});
 
   @override
-  State<Level_22> createState() => _Level_22State();
+  State<Level_26> createState() => _Level_26State();
 }
 
-class _Level_22State extends State<Level_22> {
+class _Level_26State extends State<Level_26> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
   CustomColors c = CustomColors();
 
   //this specifiy the number of columns , it must be provived and cannot be changed throw the same leve .
-  final int columnSize = 5;
+  final int columnSize = 6;
 
   //this specifiy the number of rows , it must be provived and cannot be changed throw the same leve .
   final int rowsSize = 5;
@@ -37,31 +37,35 @@ class _Level_22State extends State<Level_22> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target yellowAccent400;
-  late Target black700;
-  late Target black300;
-  late Target black;
-  late Target yellowAccent;
-  late Target purple700;
-  late Target purple;
+  late Target sun700;
+  late Target gold400;
+  late Target sun800;
+  late Target gold300;
+  late Target gold700;
+  late Target sun;
+  late Target gold;
+  late Target sun300;
+  late Target gold800;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    black700 = Target(index: 2, color: "0xFFE3D3D3".obs);
-    purple700 = Target(index: 6, color: "0xFFE3D3D3".obs);
-    black300 = Target(index: 8, color: "0xFFE3D3D3".obs);
-    yellowAccent400 = Target(index: 10, color: "0xFFE3D3D3".obs);
-    purple = Target(index: 14, color: "0xFFE3D3D3".obs);
-    black = Target(index: 16, color: "0xFFE3D3D3".obs);
-    yellowAccent = Target(index: 18, color: "0xFFE3D3D3".obs);
+    gold300 = Target(index: 1, color: "0xFFE3D3D3".obs);
+    gold400 = Target(index: 2, color: "0xFFE3D3D3".obs);
+    gold = Target(index: 7, color: "0xFFE3D3D3".obs);
+    gold700 = Target(index: 8, color: "0xFFE3D3D3".obs);
+    gold800 = Target(index: 9, color: "0xFFE3D3D3".obs);
+    sun300 = Target(index: 15, color: "0xFFE3D3D3".obs);
+    sun = Target(index: 16, color: "0xFFE3D3D3".obs);
+    sun700 = Target(index: 21, color: "0xFFE3D3D3".obs);
+    sun800 = Target(index: 22, color: "0xFFE3D3D3".obs);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 22;
+    g.level.value = 26;
 
     //activate second index position
     g.secondIndex = false;
@@ -84,13 +88,15 @@ class _Level_22State extends State<Level_22> {
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
       g.targets = [
-        black300,
-        yellowAccent400,
-        black700,
-        black,
-        yellowAccent,
-        purple700,
-        purple
+        sun800,
+        sun700,
+        gold400,
+        gold300,
+        gold700,
+        sun,
+        gold,
+        sun300,
+        gold800,
       ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
@@ -105,46 +111,62 @@ class _Level_22State extends State<Level_22> {
       await g.delay();
 
       //movements starts here
-      g.colorChange(c.black.value, black);
 
-      await g.delay(duration: 500);
+      g.colorChange(c.gold300.value, gold300);
+      await g.delay(duration: 200);
 
-      g.colorChange(c.black300.value, black300);
-      g.toGivenPath(black300, [9, 4, 3, 8, 7, 12]);
+      g.colorChange(c.gold400.value, gold400);
+      await g.delay(duration: 200);
 
-      await g.toGivenPath(black, [11, 12, 17, 22, 21, 20]);
+      g.colorChange(c.sunflower700.value, sun700);
+      await g.delay(duration: 200);
 
-      g.colorChange(c.yellowAccent.value, yellowAccent);
+      g.colorChange(c.sunflower800.value, sun800);
 
-      await g.delay(duration: 500);
+      g.toGivenPath(gold400, [3, 4]);
+      g.toGivenPath(sun700, [20, 19]);
+      g.toGivenPath(gold300, [0, 6, 12, 18]);
+      await g.toGivenPath(sun800, [23, 17, 11, 5]);
 
-      g.colorChange(c.yellowAccent400.value, yellowAccent400);
-      g.toGivenPath(yellowAccent400, [11, 16, 15]);
+      await g.delay(duration: 300);
 
-      await g.toGivenPath(yellowAccent, [19, 24, 23]);
+      g.colorChange(c.sunflower300.value, sun300);
+      await g.delay(duration: 100);
 
-      g.colorChange(c.purple700.value, purple700);
+      g.colorChange(c.sunflower.value, sun);
+      g.down(sun300);
+      await g.down(sun);
 
-      await g.delay(duration: 500);
+      await g.delay(duration: 300);
 
-      g.colorChange(c.purple.value, purple);
-      g.toGivenPath(purple, [13, 8, 9, 4, 3]);
+      g.colorChange(c.gold.value, gold);
+      await g.delay(duration: 100);
 
-      await g.toGivenPath(purple700, [5, 0, 1, 6, 7]);
+      g.colorChange(c.gold700.value, gold700);
+      await g.delay(duration: 100);
 
-      g.colorChange(c.black700.value, black700);
-      g.right(black);
-      g.right(black300);
+      g.colorChange(c.gold800.value, gold800);
 
-      await g.toGivenPath(black700, [1, 0, 5, 10, 11, 16, 17]);
+      g.toGivenPath(gold700, [2, 1, 0], color: c.red700.value);
+      await g.toGivenPath(gold800, [15, 16, 17, 23, 29],
+          color: c.mexRed700.value);
 
-      g.right(yellowAccent);
-      g.right(purple);
-      g.left(purple700);
-      g.up(black);
-      g.up(black300);
-      g.up(black700);
-      await g.down(yellowAccent400, lastMove: true);
+      g.toGivenPath(sun300, [27, 26, 25, 24]);
+      await g.toGivenPath(gold, [8, 9, 10, 11], color: c.red.value);
+
+      g.toGivenPath(sun, [21, 15, 9, 10], color: c.pink.value);
+      await g.toGivenPath(sun700, [20, 14, 8, 7]);
+
+      g.toGivenPath(sun300, [25, 26, 27, 27, 21], color: c.pink300.value);
+      await g.toGivenPath(gold300, [19, 20, 21, 15], color: c.red300.value);
+
+      g.toGivenPath(gold800, [28, 27, 26, 20]);
+      g.colorChange(c.mexRed300.value, gold400);
+      await g.toGivenPath(gold700, [1, 2, 8, 14]);
+
+      g.colorChange(c.prim_1.value, sun800);
+      await g.toGivenPath(sun700, [8, 9],
+          color: c.pink700.value, lastMove: true);
 
       //post frame callback end
     });
@@ -185,7 +207,7 @@ class _Level_22State extends State<Level_22> {
               padding: const EdgeInsets.all(23),
               unlockColor: c.unlockColor,
               lockColor: c.lockColor,
-              canChange: false,
+              canChange: true,
               position: CustomIcons.circle_1,
               onReorderList: g.onListReorder,
               unlockFlag: g.unlockFlag.value,

@@ -114,7 +114,7 @@ class _Level_24State extends State<Level_24> {
       g.colorChange(c.neonLightBlue.value, neonLightBlue);
       await g.delay(duration: 100);
       g.colorChange(c.neonPurple.value, neonPurple);
-      square.playSound('water');
+
       await g.delay(duration: 100);
 
       g.toGivenPath(neonYellow, [0, 5, 10, 15, 16]);
@@ -123,10 +123,10 @@ class _Level_24State extends State<Level_24> {
       await g.delay(duration: 500);
 
       g.colorChange(c.neonOrange.value, neonOrange);
-      square.playSound('water');
+
       await g.delay(duration: 100);
       g.colorChange(c.neonPink.value, neonPink);
-      square.playSound('water');
+
       await g.delay(duration: 100);
       g.toPath(neonPink, 0);
       await g.toPath(neonOrange, 24);
@@ -135,18 +135,18 @@ class _Level_24State extends State<Level_24> {
 
       g.colorChange(c.neonBlue.value, neonBlue);
       g.colorChange(c.amber.value, neonOrange);
-      square.playSound('water');
+
       await g.toGivenPath(neonBlue, [14, 19, 18, 23]);
 
       await g.delay(duration: 500);
 
       g.colorChange(c.neonGreen.value, neonGreen);
-      square.playSound('water');
+
       await g.toGivenPath(neonGreen, [10, 15, 20]);
 
       g.colorChange(c.neonRed.value, neonRed);
       g.colorChange(c.pink300.value, neonPurple);
-      square.playSound('water');
+
       g.toGivenPath(neonLightBlue, [11, 10, 5, 6, 1], color: c.pink700.value);
       await g.toGivenPath(neonRed, [3, 4, 9, 14], color: c.pink.value);
 
@@ -158,14 +158,14 @@ class _Level_24State extends State<Level_24> {
       g.up(neonGreen);
       g.colorChange(c.green300.value, neonYellow);
       g.colorChange(c.green.value, neonPink);
-      square.playSound('water');
+
       await g.toGivenPath(neonBlue, [22, 21], color: c.amberAccent.value);
       await g.right(neonPink);
 
       await g.left(neonOrange);
       g.up(neonBlue);
       g.colorChange(c.green700.value, neonGreen);
-      square.playSound('water');
+
       await g.left(neonOrange, lastMove: true);
 
       //post frame callback end

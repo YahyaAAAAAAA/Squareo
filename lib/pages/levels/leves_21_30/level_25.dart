@@ -10,21 +10,21 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_22 extends StatefulWidget {
-  const Level_22({super.key});
+class Level_25 extends StatefulWidget {
+  const Level_25({super.key});
 
   @override
-  State<Level_22> createState() => _Level_22State();
+  State<Level_25> createState() => _Level_25State();
 }
 
-class _Level_22State extends State<Level_22> {
+class _Level_25State extends State<Level_25> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
   CustomColors c = CustomColors();
 
   //this specifiy the number of columns , it must be provived and cannot be changed throw the same leve .
-  final int columnSize = 5;
+  final int columnSize = 6;
 
   //this specifiy the number of rows , it must be provived and cannot be changed throw the same leve .
   final int rowsSize = 5;
@@ -37,31 +37,35 @@ class _Level_22State extends State<Level_22> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target yellowAccent400;
-  late Target black700;
-  late Target black300;
-  late Target black;
-  late Target yellowAccent;
-  late Target purple700;
-  late Target purple;
+  late Target tacao700;
+  late Target tacao;
+  late Target portage700;
+  late Target portage;
+  late Target riptide;
+  late Target portage300;
+  late Target tacao300;
+  late Target riptide300;
+  late Target riptide700;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    black700 = Target(index: 2, color: "0xFFE3D3D3".obs);
-    purple700 = Target(index: 6, color: "0xFFE3D3D3".obs);
-    black300 = Target(index: 8, color: "0xFFE3D3D3".obs);
-    yellowAccent400 = Target(index: 10, color: "0xFFE3D3D3".obs);
-    purple = Target(index: 14, color: "0xFFE3D3D3".obs);
-    black = Target(index: 16, color: "0xFFE3D3D3".obs);
-    yellowAccent = Target(index: 18, color: "0xFFE3D3D3".obs);
+    tacao300 = Target(index: 7, color: "0xFFE3D3D3".obs);
+    tacao = Target(index: 9, color: "0xFFE3D3D3".obs);
+    tacao700 = Target(index: 16, color: "0xFFE3D3D3".obs);
+    portage300 = Target(index: 0, color: "0xFFE3D3D3".obs);
+    portage = Target(index: 18, color: "0xFFE3D3D3".obs);
+    portage700 = Target(index: 11, color: "0xFFE3D3D3".obs);
+    riptide300 = Target(index: 25, color: "0xFFE3D3D3".obs);
+    riptide = Target(index: 27, color: "0xFFE3D3D3".obs);
+    riptide700 = Target(index: 22, color: "0xFFE3D3D3".obs);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 22;
+    g.level.value = 25;
 
     //activate second index position
     g.secondIndex = false;
@@ -84,13 +88,15 @@ class _Level_22State extends State<Level_22> {
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
       g.targets = [
-        black300,
-        yellowAccent400,
-        black700,
-        black,
-        yellowAccent,
-        purple700,
-        purple
+        portage700,
+        tacao700,
+        tacao,
+        portage,
+        riptide,
+        portage300,
+        tacao300,
+        riptide300,
+        riptide700,
       ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
@@ -105,46 +111,68 @@ class _Level_22State extends State<Level_22> {
       await g.delay();
 
       //movements starts here
-      g.colorChange(c.black.value, black);
 
-      await g.delay(duration: 500);
+      g.colorChange(c.riptide700.value, riptide700);
+      await g.delay(duration: 100);
 
-      g.colorChange(c.black300.value, black300);
-      g.toGivenPath(black300, [9, 4, 3, 8, 7, 12]);
+      g.colorChange(c.tacao.value, tacao);
+      await g.delay(duration: 100);
 
-      await g.toGivenPath(black, [11, 12, 17, 22, 21, 20]);
+      g.colorChange(c.portage.value, portage);
+      await g.delay(duration: 100);
 
-      g.colorChange(c.yellowAccent.value, yellowAccent);
+      g.colorChange(c.portage300.value, portage300);
+      g.down(portage300);
+      g.right(riptide700);
+      g.right(tacao);
 
-      await g.delay(duration: 500);
+      await g.down(portage);
 
-      g.colorChange(c.yellowAccent400.value, yellowAccent400);
-      g.toGivenPath(yellowAccent400, [11, 16, 15]);
+      g.down(portage300);
+      g.down(riptide700);
 
-      await g.toGivenPath(yellowAccent, [19, 24, 23]);
+      await g.up(tacao);
 
-      g.colorChange(c.purple700.value, purple700);
+      await g.right(tacao);
 
-      await g.delay(duration: 500);
+      await g.delay(duration: 300);
 
-      g.colorChange(c.purple.value, purple);
-      g.toGivenPath(purple, [13, 8, 9, 4, 3]);
+      g.colorChange(c.riptide.value, riptide);
+      await g.delay(duration: 100);
+      g.colorChange(c.riptide300.value, riptide300);
 
-      await g.toGivenPath(purple700, [5, 0, 1, 6, 7]);
+      g.toPath(riptide, 3);
+      await g.toPath(riptide300, 2);
 
-      g.colorChange(c.black700.value, black700);
-      g.right(black);
-      g.right(black300);
+      g.colorChange(c.portage700.value, portage700);
+      g.colorChange(c.tacao300.value, tacao300);
+      g.colorChange(c.orange.value, riptide);
+      await g.toGivenPath(portage700, [10, 9, 15, 14, 20, 26]);
 
-      await g.toGivenPath(black700, [1, 0, 5, 10, 11, 16, 17]);
+      g.down(riptide300);
+      g.up(tacao300);
+      g.colorChange(c.yellow700.value, portage700);
+      g.colorChange(c.orange300.value, riptide300);
+      await g.down(riptide);
 
-      g.right(yellowAccent);
-      g.right(purple);
-      g.left(purple700);
-      g.up(black);
-      g.up(black300);
-      g.up(black700);
-      await g.down(yellowAccent400, lastMove: true);
+      g.down(riptide300);
+      g.down(riptide);
+      await g.toGivenPath(tacao300, [2, 3, 4]);
+
+      g.colorChange(c.tacao700.value, tacao700);
+      g.colorChange(c.yellow.value, portage);
+      g.colorChange(c.yellow200.value, portage300);
+      g.down(tacao);
+      g.right(portage300);
+      g.right(portage);
+      await g.toGivenPath(tacao700, [22, 23, 17]);
+
+      g.right(tacao300);
+      g.up(portage);
+      g.colorChange(c.orange700.value, riptide700);
+      await g.toGivenPath(riptide700, [28, 22, 16]);
+
+      await g.left(portage700, lastMove: true);
 
       //post frame callback end
     });
@@ -185,7 +213,7 @@ class _Level_22State extends State<Level_22> {
               padding: const EdgeInsets.all(23),
               unlockColor: c.unlockColor,
               lockColor: c.lockColor,
-              canChange: false,
+              canChange: true,
               position: CustomIcons.circle_1,
               onReorderList: g.onListReorder,
               unlockFlag: g.unlockFlag.value,

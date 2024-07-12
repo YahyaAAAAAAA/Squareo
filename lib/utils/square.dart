@@ -16,6 +16,10 @@ import 'package:Squareo/pages/levels/leves_21_30/level_21.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_22.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_23.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_24.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_25.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_26.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_27.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_28.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -53,7 +57,7 @@ class Square {
   bool activeDrag = false;
 
   //temp value for testing
-  bool numbersFlag = false;
+  bool numbersFlag = true;
 
   //temp value for testing dialogs barrier
   bool barrierDismiss = false;
@@ -65,7 +69,7 @@ class Square {
   bool unlockFlag = false;
 
   //! total levels made (currently 12) change till 30
-  int totalLevels = 24;
+  int totalLevels = 26;
 
   //for comparing best grade
   List<String> grades = [
@@ -1302,7 +1306,7 @@ class Square {
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: ClipPath(
-            clipper: fruits[index][1] == c.wrongColor ? null : innerDecider(),
+            clipper: fruits[index][1] == "0xFFE3D3D3" ? null : innerDecider(),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(db.squaresBorderRadius),
@@ -1329,7 +1333,7 @@ class Square {
                       ),
                     )
                   : Icon(
-                      fruits[index][1] == c.wrongColor ? null : iconDecider(),
+                      fruits[index][1] == "0xFFE3D3D3" ? null : iconDecider(),
                       color: c.transparent.withOpacity(0.2),
                       size: db.squaresIcon == 3
                           ? 30
@@ -1570,6 +1574,18 @@ class Square {
     }
     if (index == 24) {
       Get.offAll(() => Level_24(), transition: Transition.size);
+    }
+    if (index == 25) {
+      Get.offAll(() => Level_25(), transition: Transition.size);
+    }
+    if (index == 26) {
+      Get.offAll(() => Level_26(), transition: Transition.size);
+    }
+    if (index == 27) {
+      Get.offAll(() => Level_27(), transition: Transition.size);
+    }
+    if (index == 28) {
+      Get.offAll(() => Level_28(), transition: Transition.size);
     }
   }
 

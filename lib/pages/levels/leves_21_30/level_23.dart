@@ -111,7 +111,6 @@ class _Level_23State extends State<Level_23> {
 
       g.colorChange(c.tealAccent300.value, tealAccent300);
       await g.delay(duration: 100);
-      square.playSound('water');
 
       g.colorChange(c.teal.value, teal);
       await g.delay(duration: 100);
@@ -133,7 +132,7 @@ class _Level_23State extends State<Level_23> {
       await g.delay(duration: 100);
 
       g.colorChange(c.turquoise.value, turq);
-      square.playSound('water');
+
       await g.delay(duration: 100);
 
       g.toGivenPath(loch700, [15, 20]);

@@ -146,7 +146,7 @@ class TargetsController extends GetxController {
 
   //change indiviual targets color
   Future<void> colorChange(String newColor, Target t) async {
-    // square.playSound('water');
+    //
 
     //update the color for win condition
     t.color.value = newColor;
@@ -157,7 +157,6 @@ class TargetsController extends GetxController {
   //switch 2 targets colors
   Future<void> colorSwitch(Target t1, Target t2) async {
     //sound
-    square.playSound('water');
 
     //causing state update
     t1.color.value = t1.color.value;
@@ -170,7 +169,6 @@ class TargetsController extends GetxController {
   //change all targets color with a new one
   Future<void> colorChangeAll(String newColor, String oldColor) async {
     //sound
-    square.playSound('water');
 
     for (int i = 0; i < list.length; i++) {
       //update list for grid visual
@@ -317,6 +315,15 @@ class TargetsController extends GetxController {
     );
   }
 
+  //hides a target and moves it to new position
+  Future<void> fade(Target t, int newIndex, {int duration = 500}) async {
+    String temp = t.color.value;
+    colorChange("0xFFE3D3D3", t);
+    t.index = newIndex;
+    await delay(duration: duration);
+    colorChange(temp, t);
+  }
+
   //moves target to another location (called with Breadth first algo) 😊
   Future to(Target target, int to, {bool lastMove = false}) async {
     //incase same is true , save init value
@@ -367,7 +374,7 @@ class TargetsController extends GetxController {
       if (color != '') {
         if (i == (path.length / 2).floor()) {
           currentC = color;
-          square.playSound('water');
+
           colorChange(color, t);
         }
       }
@@ -378,18 +385,30 @@ class TargetsController extends GetxController {
     }
   }
 
-  //moves target in a path of list of int
+  //moves target in a path of list of integers
   Future toGivenPath(
     Target t,
     List<int> path, {
     bool lastMove = false,
     String color = '',
+    bool canFlick = false,
   }) async {
+    String wrongC = c.wrongColor.value;
+    String currentC = t.color.value;
+
     for (int i = 0; i < path.length; i++) {
+      //color flick between current color and wrong color
+      if (canFlick) {
+        if (i == 1 || i == path.length - 1) {
+          colorChange(currentC, t);
+        } else {
+          colorChange(wrongC, t);
+        }
+      }
+
       //color change
       if (color != '') {
         if (i == (path.length / 2).floor()) {
-          square.playSound('water');
           colorChange(color, t);
         }
       }

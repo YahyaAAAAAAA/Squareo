@@ -235,6 +235,7 @@ class CustomColors {
   Color cc = Colors.brown.shade300;
   Color ccc = Colors.brown.shade700;
   Color cccc = Colors.brown.shade900;
+  Color ccccc = const Color(0xFFFBC02D);
 
   RxString wrongColor = "0xFFE3D3D3".obs;
 
@@ -247,9 +248,33 @@ class CustomColors {
   RxString neonOrange = "0xFFFF6600".obs;
   RxString neonBlue = "0xFF0033FF".obs;
 
+  RxString pastelPink = "0xFFFFD4E5".obs;
+  RxString pastelGreen = "0xFFD4FFEA".obs;
+  RxString pastelPurple = "0xFFEECBFF".obs;
+  RxString pastelYellow = "0xFFFEFFA3".obs;
+  RxString pastelBlue = "0xFFDBDCFF".obs;
+  RxString pastelRed = "0xFFFFB3BA".obs;
+
+  RxString iceCreamBrown = "0xFF6B3E26".obs;
+  RxString iceCreamPink = "0xFFFFC5D9".obs;
+  RxString iceCreamGreen = "0xFFC2F2D0".obs;
+  RxString iceCreamYellow = "0xFFDF5C9".obs;
+  RxString iceCreamOrange = "0xFFFFCB85".obs;
+
   RxString lima = "0xFF68BE25".obs;
   RxString lima300 = "0xFF95D266".obs;
   RxString lima700 = "0xFF3E7216".obs;
+
+  RxString gold = "0xFFDAA520".obs;
+  RxString gold400 = "0xFFDDAE36".obs;
+  RxString gold300 = "0xFFE8C979".obs;
+  RxString gold700 = "0xFF987316".obs;
+  RxString gold800 = "0xFF826313".obs;
+
+  RxString sunflower = "0xFFDACB20".obs;
+  RxString sunflower700 = "0xFFAEA21A".obs;
+  RxString sunflower800 = "0xFF998E16".obs;
+  RxString sunflower300 = "0xFFE5DB63".obs;
 
   RxString jungle = "0xFF25BE9A".obs;
   RxString jungle300 = "0xFF66D2B8".obs;
@@ -289,6 +314,7 @@ class CustomColors {
 
   RxString yellow = "0xFFFFEB3B".obs;
   RxString yellow200 = "0xFFFFF176".obs;
+  RxString yellow700 = "0xFFFBC02D".obs;
 
   RxString yellowAccent = "0xFFFFFF00".obs;
   RxString yellowAccent400 = "0xFFFFEA00".obs;
@@ -296,6 +322,22 @@ class CustomColors {
   RxString purple = "0xFF9C27B0".obs;
   RxString purple300 = "0xFFBA68C8".obs;
   RxString purple700 = "0xFF7B1FA2".obs;
+
+  RxString amethyst = "0xFF9352CD".obs;
+  RxString amethyst700 = "0xFF673990".obs;
+  RxString amethyst300 = "0xFFB386DC".obs;
+
+  RxString portage = "0xFF8876EA".obs;
+  RxString portage700 = "0xFF5F53A4".obs;
+  RxString portage300 = "0xFFAC9FF0".obs;
+
+  RxString tacao = "0xFFEAB676".obs;
+  RxString tacao300 = "0xFFF0CC9F".obs;
+  RxString tacao700 = "0xFFA47F53".obs;
+
+  RxString riptide = "0xFF76EAB6".obs;
+  RxString riptide300 = "0xFF9FF0CC".obs;
+  RxString riptide700 = "0xFF53A47F".obs;
 
   RxString amber = "0xFFFFC107".obs;
   RxString amber700d = "0xFFFFA000".obs;

@@ -13,6 +13,10 @@ import 'package:Squareo/pages/levels/leves_21_30/level_21.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_22.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_23.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_24.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_25.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_26.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_27.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_28.dart';
 import 'package:Squareo/pages/scores_page.dart';
 import 'package:Squareo/utils/square.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -409,6 +413,34 @@ class _LevelsPageState extends State<LevelsPage> {
     if (index == 3) {
       if (square.db.levelsUnlock[23]) {
         Get.offAll(() => Level_24(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 20);
+      }
+    }
+    if (index == 4) {
+      if (square.db.levelsUnlock[24]) {
+        Get.offAll(() => Level_25(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 20);
+      }
+    }
+    if (index == 5) {
+      if (square.db.levelsUnlock[25]) {
+        Get.offAll(() => Level_26(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 20);
+      }
+    }
+    if (index == 6) {
+      if (square.db.levelsUnlock[26]) {
+        Get.offAll(() => Level_27(), transition: Transition.size);
+      } else {
+        showScaffoldMessenger(index + 20);
+      }
+    }
+    if (index == 7) {
+      if (square.db.levelsUnlock[27]) {
+        Get.offAll(() => Level_28(), transition: Transition.size);
       } else {
         showScaffoldMessenger(index + 20);
       }

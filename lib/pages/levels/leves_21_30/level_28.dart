@@ -10,21 +10,21 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_22 extends StatefulWidget {
-  const Level_22({super.key});
+class Level_28 extends StatefulWidget {
+  const Level_28({super.key});
 
   @override
-  State<Level_22> createState() => _Level_22State();
+  State<Level_28> createState() => _Level_28State();
 }
 
-class _Level_22State extends State<Level_22> {
+class _Level_28State extends State<Level_28> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
   CustomColors c = CustomColors();
 
   //this specifiy the number of columns , it must be provived and cannot be changed throw the same leve .
-  final int columnSize = 5;
+  final int columnSize = 6;
 
   //this specifiy the number of rows , it must be provived and cannot be changed throw the same leve .
   final int rowsSize = 5;
@@ -37,34 +37,40 @@ class _Level_22State extends State<Level_22> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target yellowAccent400;
-  late Target black700;
-  late Target black300;
-  late Target black;
-  late Target yellowAccent;
-  late Target purple700;
-  late Target purple;
+  late Target yellow300;
+  late Target pGreen;
+  late Target green300;
+  late Target pPink;
+  late Target pYellow;
+  late Target blue300;
+  late Target pPurple;
+  late Target pink300;
+  late Target pBlue;
+  late Target purple300;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    black700 = Target(index: 2, color: "0xFFE3D3D3".obs);
-    purple700 = Target(index: 6, color: "0xFFE3D3D3".obs);
-    black300 = Target(index: 8, color: "0xFFE3D3D3".obs);
-    yellowAccent400 = Target(index: 10, color: "0xFFE3D3D3".obs);
-    purple = Target(index: 14, color: "0xFFE3D3D3".obs);
-    black = Target(index: 16, color: "0xFFE3D3D3".obs);
-    yellowAccent = Target(index: 18, color: "0xFFE3D3D3".obs);
+    pPink = Target(index: 4, color: "0xFFE3D3D3".obs);
+    pGreen = Target(index: 0, color: "0xFFE3D3D3".obs);
+    pPurple = Target(index: 14, color: "0xFFE3D3D3".obs);
+    pYellow = Target(index: 28, color: "0xFFE3D3D3".obs);
+    pBlue = Target(index: 12, color: "0xFFE3D3D3".obs);
+    pink300 = Target(index: 10, color: "0xFFE3D3D3".obs);
+    blue300 = Target(index: 18, color: "0xFFE3D3D3".obs);
+    yellow300 = Target(index: 29, color: "0xFFE3D3D3".obs);
+    green300 = Target(index: 1, color: "0xFFE3D3D3".obs);
+    purple300 = Target(index: 15, color: "0xFFE3D3D3".obs);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 22;
+    g.level.value = 28;
 
     //activate second index position
-    g.secondIndex = false;
+    g.secondIndex = true;
 
     //passing context
     g.context = context;
@@ -84,13 +90,16 @@ class _Level_22State extends State<Level_22> {
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
       g.targets = [
-        black300,
-        yellowAccent400,
-        black700,
-        black,
-        yellowAccent,
-        purple700,
-        purple
+        green300,
+        yellow300,
+        pGreen,
+        pPink,
+        pYellow,
+        blue300,
+        pPurple,
+        pink300,
+        pBlue,
+        purple300
       ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
@@ -105,46 +114,11 @@ class _Level_22State extends State<Level_22> {
       await g.delay();
 
       //movements starts here
-      g.colorChange(c.black.value, black);
 
-      await g.delay(duration: 500);
+      // pink1.secondIndex = pink1.initIndex - 1;
+      //TODO: Mass fade prototype level 29
 
-      g.colorChange(c.black300.value, black300);
-      g.toGivenPath(black300, [9, 4, 3, 8, 7, 12]);
-
-      await g.toGivenPath(black, [11, 12, 17, 22, 21, 20]);
-
-      g.colorChange(c.yellowAccent.value, yellowAccent);
-
-      await g.delay(duration: 500);
-
-      g.colorChange(c.yellowAccent400.value, yellowAccent400);
-      g.toGivenPath(yellowAccent400, [11, 16, 15]);
-
-      await g.toGivenPath(yellowAccent, [19, 24, 23]);
-
-      g.colorChange(c.purple700.value, purple700);
-
-      await g.delay(duration: 500);
-
-      g.colorChange(c.purple.value, purple);
-      g.toGivenPath(purple, [13, 8, 9, 4, 3]);
-
-      await g.toGivenPath(purple700, [5, 0, 1, 6, 7]);
-
-      g.colorChange(c.black700.value, black700);
-      g.right(black);
-      g.right(black300);
-
-      await g.toGivenPath(black700, [1, 0, 5, 10, 11, 16, 17]);
-
-      g.right(yellowAccent);
-      g.right(purple);
-      g.left(purple700);
-      g.up(black);
-      g.up(black300);
-      g.up(black700);
-      await g.down(yellowAccent400, lastMove: true);
+      await g.left(pBlue, lastMove: true);
 
       //post frame callback end
     });
@@ -186,7 +160,7 @@ class _Level_22State extends State<Level_22> {
               unlockColor: c.unlockColor,
               lockColor: c.lockColor,
               canChange: false,
-              position: CustomIcons.circle_1,
+              position: CustomIcons.circle_2,
               onReorderList: g.onListReorder,
               unlockFlag: g.unlockFlag.value,
               textColor: c.textColor,

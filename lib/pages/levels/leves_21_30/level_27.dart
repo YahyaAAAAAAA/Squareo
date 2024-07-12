@@ -10,21 +10,21 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_22 extends StatefulWidget {
-  const Level_22({super.key});
+class Level_27 extends StatefulWidget {
+  const Level_27({super.key});
 
   @override
-  State<Level_22> createState() => _Level_22State();
+  State<Level_27> createState() => _Level_27State();
 }
 
-class _Level_22State extends State<Level_22> {
+class _Level_27State extends State<Level_27> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
   CustomColors c = CustomColors();
 
   //this specifiy the number of columns , it must be provived and cannot be changed throw the same leve .
-  final int columnSize = 5;
+  final int columnSize = 6;
 
   //this specifiy the number of rows , it must be provived and cannot be changed throw the same leve .
   final int rowsSize = 5;
@@ -37,31 +37,37 @@ class _Level_22State extends State<Level_22> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target yellowAccent400;
-  late Target black700;
-  late Target black300;
-  late Target black;
-  late Target yellowAccent;
-  late Target purple700;
-  late Target purple;
+  late Target yellow300;
+  late Target pGreen;
+  late Target green300;
+  late Target pPink;
+  late Target pYellow;
+  late Target blue300;
+  late Target pPurple;
+  late Target pink300;
+  late Target pBlue;
+  late Target purple300;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    black700 = Target(index: 2, color: "0xFFE3D3D3".obs);
-    purple700 = Target(index: 6, color: "0xFFE3D3D3".obs);
-    black300 = Target(index: 8, color: "0xFFE3D3D3".obs);
-    yellowAccent400 = Target(index: 10, color: "0xFFE3D3D3".obs);
-    purple = Target(index: 14, color: "0xFFE3D3D3".obs);
-    black = Target(index: 16, color: "0xFFE3D3D3".obs);
-    yellowAccent = Target(index: 18, color: "0xFFE3D3D3".obs);
+    pPink = Target(index: 4, color: "0xFFE3D3D3".obs);
+    pGreen = Target(index: 0, color: "0xFFE3D3D3".obs);
+    pPurple = Target(index: 14, color: "0xFFE3D3D3".obs);
+    pYellow = Target(index: 28, color: "0xFFE3D3D3".obs);
+    pBlue = Target(index: 12, color: "0xFFE3D3D3".obs);
+    pink300 = Target(index: 10, color: "0xFFE3D3D3".obs);
+    blue300 = Target(index: 18, color: "0xFFE3D3D3".obs);
+    yellow300 = Target(index: 29, color: "0xFFE3D3D3".obs);
+    green300 = Target(index: 1, color: "0xFFE3D3D3".obs);
+    purple300 = Target(index: 15, color: "0xFFE3D3D3".obs);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 22;
+    g.level.value = 27;
 
     //activate second index position
     g.secondIndex = false;
@@ -84,13 +90,16 @@ class _Level_22State extends State<Level_22> {
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
       g.targets = [
-        black300,
-        yellowAccent400,
-        black700,
-        black,
-        yellowAccent,
-        purple700,
-        purple
+        green300,
+        yellow300,
+        pGreen,
+        pPink,
+        pYellow,
+        blue300,
+        pPurple,
+        pink300,
+        pBlue,
+        purple300
       ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
@@ -105,46 +114,78 @@ class _Level_22State extends State<Level_22> {
       await g.delay();
 
       //movements starts here
-      g.colorChange(c.black.value, black);
+
+      g.colorChange(c.pastelGreen.value, pGreen);
+      await g.delay(duration: 100);
+
+      g.colorChange(c.green300.value, green300);
+      await g.delay(duration: 300);
+
+      g.fade(pGreen, 20);
+      await g.delay(duration: 100);
+
+      await g.fade(green300, 21);
+
+      g.colorChange(c.pastelPink.value, pPink);
+      await g.delay(duration: 100);
+
+      g.colorChange(c.pink300.value, pink300);
+      await g.delay(duration: 300);
+
+      g.fade(pPink, 26);
+      await g.delay(duration: 100);
+
+      await g.fade(pink300, 25);
+
+      g.toGivenPath(green300, [22, 16, 10, 11]);
+      await g.toGivenPath(pink300, [19, 13, 7, 8]);
 
       await g.delay(duration: 500);
 
-      g.colorChange(c.black300.value, black300);
-      g.toGivenPath(black300, [9, 4, 3, 8, 7, 12]);
+      g.colorChange(c.pastelPurple.value, pPurple);
+      await g.delay(duration: 100);
 
-      await g.toGivenPath(black, [11, 12, 17, 22, 21, 20]);
-
-      g.colorChange(c.yellowAccent.value, yellowAccent);
-
-      await g.delay(duration: 500);
-
-      g.colorChange(c.yellowAccent400.value, yellowAccent400);
-      g.toGivenPath(yellowAccent400, [11, 16, 15]);
-
-      await g.toGivenPath(yellowAccent, [19, 24, 23]);
-
-      g.colorChange(c.purple700.value, purple700);
+      g.colorChange(c.purple300.value, purple300);
+      g.toGivenPath(purple300, [21, 27]);
+      await g.toGivenPath(pPurple, [13, 7, 1]);
 
       await g.delay(duration: 500);
 
-      g.colorChange(c.purple.value, purple);
-      g.toGivenPath(purple, [13, 8, 9, 4, 3]);
+      g.colorChange(c.pastelBlue.value, pBlue);
+      await g.delay(duration: 100);
 
-      await g.toGivenPath(purple700, [5, 0, 1, 6, 7]);
+      g.colorChange(c.blue300.value, blue300);
+      g.toGivenPath(blue300, [19, 25, 24]);
+      await g.toPath(pBlue, 17);
 
-      g.colorChange(c.black700.value, black700);
-      g.right(black);
-      g.right(black300);
+      await g.delay(duration: 400);
 
-      await g.toGivenPath(black700, [1, 0, 5, 10, 11, 16, 17]);
+      g.colorChange(c.pastelYellow.value, pYellow);
+      await g.delay(duration: 100);
 
-      g.right(yellowAccent);
-      g.right(purple);
-      g.left(purple700);
-      g.up(black);
-      g.up(black300);
-      g.up(black700);
-      await g.down(yellowAccent400, lastMove: true);
+      g.colorChange(c.yellow200.value, yellow300);
+      await g.fade(pYellow, 6);
+
+      await g.toGivenPath(yellow300, [23, 22, 16, 10, 4]);
+
+      await g.fade(blue300, 3);
+      g.toPath(pYellow, 24);
+      await g.toGivenPath(blue300, [9, 15, 21, 22, 28]);
+
+      g.fade(pPink, 6);
+      g.fade(pPurple, 13);
+      await g.fade(pGreen, 29);
+
+      g.toGivenPath(pPink, [12, 18, 19]);
+      g.left(purple300);
+      g.toGivenPath(yellow300, [3, 9, 15, 21, 27]);
+      await g.toGivenPath(pGreen, [23, 22, 16, 10, 9]);
+
+      g.fade(green300, 22);
+      await g.delay(duration: 300);
+
+      g.right(blue300);
+      await g.left(pBlue, lastMove: true);
 
       //post frame callback end
     });

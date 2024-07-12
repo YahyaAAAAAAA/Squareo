@@ -103,7 +103,7 @@ class _Level_13State extends State<Level_13> {
       await g.down(orange);
 
       g.colorChange(c.cyan.value, red);
-      square.playSound('water');
+
       g.left(red);
       await g.left(orange);
 
@@ -112,21 +112,21 @@ class _Level_13State extends State<Level_13> {
 
       g.toPath(red300, 6);
       g.colorChange(c.cyan700.value, red700);
-      square.playSound('water');
+
       await g.toPath(red700, 18);
 
       g.toPath(orange300, 3);
       await g.toPath(orange700, 9, color: c.pink700.value);
 
       g.colorChange(c.cyan300.value, red300);
-      square.playSound('water');
+
       g.left(red300);
       g.down(red700);
       g.down(orange300);
       await g.up(orange700);
 
       await g.colorChange(c.pink.value, orange);
-      square.playSound('water');
+
       g.right(orange);
       await g.left(red, lastMove: true);
 
