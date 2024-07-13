@@ -353,6 +353,48 @@ class _AboutPageState extends State<AboutPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          FittedBox(
+            child: Text(
+              "To go get an ",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Abel',
+                color: c.mainColor1,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          GradientText(
+            "A+",
+            children: [],
+            gradient: LinearGradient(
+              colors: c.aPlus,
+            ),
+            style: TextStyle(
+              fontSize: 30,
+              fontFamily: 'PlaywritePL',
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          FittedBox(
+            child: Text(
+              "moves ➜ number of colored squares or less \n time ➜ 3 seconds or less",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Abel',
+                color: c.mainColor1,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
           Text(
             "Enjoy",
             textAlign: TextAlign.center,

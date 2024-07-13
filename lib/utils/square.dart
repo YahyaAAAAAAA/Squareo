@@ -59,7 +59,7 @@ class Square {
   bool activeDrag = false;
 
   //temp value for testing
-  bool numbersFlag = false;
+  bool numbersFlag = true;
 
   //temp value for testing dialogs barrier
   bool barrierDismiss = false;
@@ -1685,6 +1685,9 @@ class Square {
   ///method to unlock a level,used mainly to access the level in [levelsPage] , called after [playerWin] method , updates the databse list , doesn't harm since we relay on [nextLevel] to move to other levels
   void unlockNextLevel(int index) {
     hiveDataCheck();
+    if (index == 30) {
+      return;
+    }
     db.levelsUnlock[index] = true;
     db.updateDataBase();
   }
