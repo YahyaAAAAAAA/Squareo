@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     square.hiveDataCheck();
 
+    //Data reset
     // square.db.createInitialDataList();
     // square.db.createInitialDataBorderOpacity();
     // square.db.createInitialDataBorderRadius();
