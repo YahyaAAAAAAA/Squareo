@@ -230,14 +230,43 @@ class CustomColors {
     const Color(0xFF24DBE2),
   ];
 
-  //squares colors , (in strings cuz i'm scared of Hive)
-  Color c = Colors.brown;
-  Color cc = Colors.brown.shade300;
-  Color ccc = Colors.brown.shade700;
-  Color cccc = Colors.brown.shade900;
-  Color ccccc = const Color(0xFFFBC02D);
+  //squares colors
+  Color c = const Color(0xFF795548);
+  Color ccccc = const Color(0xFFBCAAA4);
+  Color cc = const Color(0xFFA1887F);
+  Color ccc = const Color(0xFF5D4037);
+  Color cccc = const Color(0xFF3E2723);
+  Color cccccc = const Color(0xFFFBC02D);
 
   RxString wrongColor = "0xFFE3D3D3".obs;
+
+  RxString white = "0xFFFFFFFF".obs;
+  RxString sugar = "0xFFFFFFF0".obs;
+  RxString lightGray = "0xFFBBBBBB".obs;
+
+  RxString brown = "0xFF795548".obs;
+  RxString brown100 = "0xFFBCAAA4".obs;
+  RxString brown200 = "0xFFA1887F".obs;
+  RxString brown400 = "0xFF5D4037".obs;
+  RxString brown700 = "0xFF3E2723".obs;
+
+  RxString como = "0xFF487955".obs;
+  RxString como100 = "0xFFA4BCAA".obs;
+  RxString como200 = "0xFF6D9477".obs;
+  RxString como400 = "0xFF32553B".obs;
+  RxString como700 = "0xFF1D3022".obs;
+
+  RxString cannon = "0xFF79486C".obs;
+  RxString cannon100 = "0xFFAF91A7".obs;
+  RxString cannon200 = "0xFF946D89".obs;
+  RxString cannon400 = "0xFF55324C".obs;
+  RxString cannon700 = "0xFF301D2B".obs;
+
+  RxString bay = "0xFF554879".obs;
+  RxString bay100 = "0xFFAAA4BC".obs;
+  RxString bay200 = "0xFF776D94".obs;
+  RxString bay400 = "0xFF3B3255".obs;
+  RxString bay700 = "0xFF221D30".obs;
 
   RxString neonYellow = "0xFFFFFF00".obs;
   RxString neonRed = "0xFFFF0000".obs;
@@ -254,12 +283,6 @@ class CustomColors {
   RxString pastelYellow = "0xFFFEFFA3".obs;
   RxString pastelBlue = "0xFFDBDCFF".obs;
   RxString pastelRed = "0xFFFFB3BA".obs;
-
-  RxString iceCreamBrown = "0xFF6B3E26".obs;
-  RxString iceCreamPink = "0xFFFFC5D9".obs;
-  RxString iceCreamGreen = "0xFFC2F2D0".obs;
-  RxString iceCreamYellow = "0xFFDF5C9".obs;
-  RxString iceCreamOrange = "0xFFFFCB85".obs;
 
   RxString lima = "0xFF68BE25".obs;
   RxString lima300 = "0xFF95D266".obs;
@@ -284,9 +307,21 @@ class CustomColors {
   RxString violet300 = "0xFFD266C0".obs;
   RxString violet700 = "0xFF721663".obs;
 
-  RxString prim_1 = "0xFFF77187".obs;
-  RxString prim_2 = "0xFFF1DAB7".obs;
-  RxString prim_3 = "0xFF24DBE2".obs;
+  RxString screamingGreen = "0xFF87F771".obs;
+  RxString screamingGreen300 = "0xFF5FAD4F".obs;
+  RxString screamingGreen700 = "0xFFABF99C".obs;
+
+  RxString prim_pink = "0xFFF77187".obs;
+  RxString prim_pink300 = "0xFFF99CAB".obs;
+  RxString prim_pink700 = "0xFFAD4F5F".obs;
+
+  RxString prim_brown = "0xFFF1DAB7".obs;
+  RxString prim_brown300 = "0xFFF5E5CD".obs;
+  RxString prim_brown700 = "0xFFA99980".obs;
+
+  RxString prim_blue = "0xFF24DBE2".obs;
+  RxString prim_blue300 = "0xFF66E6EB".obs;
+  RxString prim_blue700 = "0xFF19999E".obs;
 
   RxString lightBlue = "0xFF03A9F4 ".obs;
   RxString lightBlue300 = "0xFF4FC3F7 ".obs;
@@ -375,9 +410,13 @@ class CustomColors {
   RxString pink300 = "0xFFF06292".obs;
   RxString pink700 = "0xFFC2185B".obs;
 
-  RxString black = "0xFF404040".obs;
-  RxString black300 = "0xFF5B5B5B".obs;
+  RxString gray = "0xFF8C8C8C".obs;
+
+  RxString black = "0xFF5B5B5B".obs;
+  RxString black200 = "0xFF666666".obs;
+  RxString black400 = "0xFF404040".obs;
   RxString black700 = "0xFF242424".obs;
+  RxString black800 = "0xFF060606".obs;
 
   RxString turquoise = "0xFF40E0D0".obs;
   RxString turquoise700 = "0xFF2D9D92".obs;

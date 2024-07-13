@@ -10,24 +10,24 @@ import 'package:Squareo/utils/square.dart';
 import 'package:get/get.dart';
 import 'package:mesh_gradient/mesh_gradient.dart';
 
-class Level_18 extends StatefulWidget {
-  const Level_18({super.key});
+class Level_29 extends StatefulWidget {
+  const Level_29({super.key});
 
   @override
-  State<Level_18> createState() => _Level_18State();
+  State<Level_29> createState() => _Level_29State();
 }
 
-class _Level_18State extends State<Level_18> {
+class _Level_29State extends State<Level_29> {
   final _scrollController = ScrollController();
   final _gridViewKey = GlobalKey();
 
   CustomColors c = CustomColors();
 
   //this specifiy the number of columns , it must be provived and cannot be changed throw the same leve .
-  final int columnSize = 5;
+  final int columnSize = 6;
 
   //this specifiy the number of rows , it must be provived and cannot be changed throw the same leve .
-  final int rowsSize = 5;
+  final int rowsSize = 6;
 
   final int _start = 3;
 
@@ -37,29 +37,33 @@ class _Level_18State extends State<Level_18> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target pink1;
-  late Target pink2;
-  late Target piege1;
-  late Target piege2;
-  late Target blue1;
-  late Target blue2;
+  late Target white;
+  late Target sugar;
+  late Target lightGray;
+  late Target gray;
+  late Target black;
+  late Target black400;
+  late Target black700;
+  late Target black800;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    pink1 = Target(index: 14, color: c.prim_pink);
-    pink2 = Target(index: 23, color: c.prim_pink);
-    piege1 = Target(index: 1, color: c.prim_brown);
-    piege2 = Target(index: 3, color: c.prim_brown);
-    blue1 = Target(index: 10, color: c.prim_blue);
-    blue2 = Target(index: 21, color: c.prim_blue);
+    gray = Target(index: 13, color: "0xFFE3D3D3".obs);
+    black = Target(index: 8, color: "0xFFE3D3D3".obs);
+    black400 = Target(index: 9, color: "0xFFE3D3D3".obs);
+    black700 = Target(index: 20, color: "0xFFE3D3D3".obs);
+    sugar = Target(index: 14, color: "0xFFE3D3D3".obs);
+    black800 = Target(index: 21, color: "0xFFE3D3D3".obs);
+    white = Target(index: 15, color: "0xFFE3D3D3".obs);
+    lightGray = Target(index: 16, color: "0xFFE3D3D3".obs);
 
     //steps starts in 0
     g.steps.value = 0;
 
     //set up level number
-    g.level.value = 18;
+    g.level.value = 29;
 
     //activate second index position
     g.secondIndex = true;
@@ -82,12 +86,14 @@ class _Level_18State extends State<Level_18> {
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
       g.targets = [
-        blue1,
-        pink2,
-        piege2,
-        piege1,
-        pink1,
-        blue2,
+        sugar,
+        white,
+        black700,
+        black,
+        black400,
+        gray,
+        lightGray,
+        black800
       ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
@@ -103,37 +109,80 @@ class _Level_18State extends State<Level_18> {
 
       //movements starts here
 
-      pink1.secondIndex = pink1.initIndex - 1;
-      blue1.secondIndex = blue1.initIndex + 1;
-      piege1.secondIndex = piege1.initIndex - 1;
-      piege2.secondIndex = piege2.initIndex + columnSize;
-      blue2.secondIndex = blue2.initIndex - columnSize;
-      pink2.secondIndex = pink2.initIndex - 1;
+      black.secondIndex = 2;
+      black400.secondIndex = 3;
+      gray.secondIndex = 8;
+      lightGray.secondIndex = 9;
+      sugar.secondIndex = 23;
+      white.secondIndex = 30;
+      black700.secondIndex = 18;
+      black800.secondIndex = 35;
 
-      g.left(pink1);
-      await g.right(blue1);
+      g.colorChange(c.black.value, black);
+      await g.delay(duration: 200);
 
-      g.left(pink1);
-      await g.up(blue1);
+      g.colorChange(c.black800.value, black800);
+      await g.delay(duration: 200);
 
-      g.left(piege1);
-      await g.left(piege2);
+      g.colorChange(c.black400.value, black400);
+      await g.delay(duration: 200);
 
-      g.down(piege1);
-      await g.down(piege2);
+      g.colorChange(c.black700.value, black700);
+      await g.delay(duration: 200);
 
-      g.left(pink2);
-      await g.up(blue2);
-      g.toPath(pink2, 10);
-      await g.toPath(blue2, 4);
+      g.colorChange(c.sugar.value, sugar);
+      await g.delay(duration: 200);
 
-      await g.left(blue2);
-      g.right(piege2);
-      g.right(blue1);
-      g.right(piege1);
-      g.right(pink1);
-      g.right(pink2);
-      await g.left(blue2, lastMove: true);
+      g.colorChange(c.gray.value, gray);
+      await g.delay(duration: 200);
+      g.colorChange(c.white.value, white);
+
+      await g.delay(duration: 200);
+      g.colorChange(c.lightGray.value, lightGray);
+
+      g.left(gray);
+      await g.right(lightGray);
+
+      g.down(black700);
+      await g.down(black800);
+
+      g.up(black);
+      await g.up(black400);
+
+      g.left(black);
+      await g.right(black400);
+
+      g.fade(gray, 8);
+      await g.fade(lightGray, 9);
+
+      await g.delay(duration: 200);
+
+      g.fade(white, 24);
+      await g.fade(sugar, 29);
+
+      g.up(sugar);
+      await g.down(white);
+
+      await g.fade(black700, 18);
+
+      await g.toGivenPath(black800, [33, 34, 35]);
+
+      g.toGivenPath(white, [31, 32, 26]);
+      await g.toGivenPath(black, [0, 6, 12]);
+
+      g.toGivenPath(black400, [5, 11, 17]);
+      await g.toGivenPath(sugar, [22, 21]);
+
+      g.toGivenPath(black700, [19, 20]);
+      await g.toGivenPath(black, [13, 14, 15]);
+
+      g.toGivenPath(black800, [34, 33, 32]);
+      await g.toGivenPath(black400, [23, 29, 28, 27]);
+
+      g.fade(lightGray, 22);
+      await g.fade(gray, 25);
+
+      await g.to(black, black.index, lastMove: true);
 
       //post frame callback end
     });
@@ -175,7 +224,7 @@ class _Level_18State extends State<Level_18> {
               unlockColor: c.unlockColor,
               lockColor: c.lockColor,
               canChange: false,
-              position: CustomIcons.circle_2,
+              position: CustomIcons.circle_3,
               onReorderList: g.onListReorder,
               unlockFlag: g.unlockFlag.value,
               textColor: c.textColor,

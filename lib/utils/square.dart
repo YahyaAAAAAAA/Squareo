@@ -20,6 +20,8 @@ import 'package:Squareo/pages/levels/leves_21_30/level_25.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_26.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_27.dart';
 import 'package:Squareo/pages/levels/leves_21_30/level_28.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_29.dart';
+import 'package:Squareo/pages/levels/leves_21_30/level_30.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -57,7 +59,7 @@ class Square {
   bool activeDrag = false;
 
   //temp value for testing
-  bool numbersFlag = true;
+  bool numbersFlag = false;
 
   //temp value for testing dialogs barrier
   bool barrierDismiss = false;
@@ -68,8 +70,7 @@ class Square {
   //display a lock icon till last move it changes it to unlock
   bool unlockFlag = false;
 
-  //! total levels made (currently 12) change till 30
-  int totalLevels = 26;
+  int totalLevels = 30;
 
   //for comparing best grade
   List<String> grades = [
@@ -1586,6 +1587,12 @@ class Square {
     }
     if (index == 28) {
       Get.offAll(() => Level_28(), transition: Transition.size);
+    }
+    if (index == 29) {
+      Get.offAll(() => Level_29(), transition: Transition.size);
+    }
+    if (index == 30) {
+      Get.offAll(() => Level_30(), transition: Transition.size);
     }
   }
 

@@ -27,7 +27,7 @@ class _Level_28State extends State<Level_28> {
   final int columnSize = 6;
 
   //this specifiy the number of rows , it must be provived and cannot be changed throw the same leve .
-  final int rowsSize = 5;
+  final int rowsSize = 6;
 
   final int _start = 3;
 
@@ -37,31 +37,31 @@ class _Level_28State extends State<Level_28> {
   final TargetsController g = Get.put(TargetsController());
 
   //individual targets put in targets list
-  late Target yellow300;
-  late Target pGreen;
-  late Target green300;
-  late Target pPink;
-  late Target pYellow;
-  late Target blue300;
-  late Target pPurple;
-  late Target pink300;
-  late Target pBlue;
-  late Target purple300;
+  late Target como;
+  late Target brown700;
+  late Target como100;
+  late Target brown;
+  late Target brown400;
+  late Target brown100;
+  late Target como700;
+  late Target como400;
+  late Target brown200;
+  late Target como200;
 
   @override
   void initState() {
     square.hiveDataCheck();
 
-    pPink = Target(index: 4, color: "0xFFE3D3D3".obs);
-    pGreen = Target(index: 0, color: "0xFFE3D3D3".obs);
-    pPurple = Target(index: 14, color: "0xFFE3D3D3".obs);
-    pYellow = Target(index: 28, color: "0xFFE3D3D3".obs);
-    pBlue = Target(index: 12, color: "0xFFE3D3D3".obs);
-    pink300 = Target(index: 10, color: "0xFFE3D3D3".obs);
-    blue300 = Target(index: 18, color: "0xFFE3D3D3".obs);
-    yellow300 = Target(index: 29, color: "0xFFE3D3D3".obs);
-    green300 = Target(index: 1, color: "0xFFE3D3D3".obs);
-    purple300 = Target(index: 15, color: "0xFFE3D3D3".obs);
+    brown100 = Target(index: 0, color: "0xFFE3D3D3".obs);
+    brown200 = Target(index: 1, color: "0xFFE3D3D3".obs);
+    brown = Target(index: 35, color: "0xFFE3D3D3".obs);
+    brown400 = Target(index: 18, color: "0xFFE3D3D3".obs);
+    brown700 = Target(index: 5, color: "0xFFE3D3D3".obs);
+    como100 = Target(index: 4, color: "0xFFE3D3D3".obs);
+    como200 = Target(index: 19, color: "0xFFE3D3D3".obs);
+    como = Target(index: 25, color: "0xFFE3D3D3".obs);
+    como400 = Target(index: 22, color: "0xFFE3D3D3".obs);
+    como700 = Target(index: 23, color: "0xFFE3D3D3".obs);
 
     //steps starts in 0
     g.steps.value = 0;
@@ -90,16 +90,16 @@ class _Level_28State extends State<Level_28> {
       g.gridSize = [rowsSize, columnSize];
       //initlize the targets (must be called to reset the values on restart)
       g.targets = [
-        green300,
-        yellow300,
-        pGreen,
-        pPink,
-        pYellow,
-        blue300,
-        pPurple,
-        pink300,
-        pBlue,
-        purple300
+        como100,
+        como,
+        brown700,
+        brown,
+        brown400,
+        brown100,
+        como700,
+        como400,
+        brown200,
+        como200
       ];
       //initlize the list (must be called to reset the list)
       g.list = g.generateList().obs;
@@ -115,10 +115,69 @@ class _Level_28State extends State<Level_28> {
 
       //movements starts here
 
-      // pink1.secondIndex = pink1.initIndex - 1;
-      //TODO: Mass fade prototype level 29
+      como100.secondIndex = 12;
+      como200.secondIndex = 13;
+      como400.secondIndex = 16;
+      como700.secondIndex = 17;
 
-      await g.left(pBlue, lastMove: true);
+      brown100.secondIndex = 6;
+      brown200.secondIndex = 7;
+      brown400.secondIndex = 10;
+      brown700.secondIndex = 11;
+
+      brown.secondIndex = 27;
+      como.secondIndex = 26;
+
+      g.colorChange(c.brown.value, brown);
+      await g.delay(duration: 100);
+      g.colorChange(c.brown400.value, brown400);
+      await g.delay(duration: 100);
+      g.colorChange(c.como100.value, como100);
+      await g.delay(duration: 400);
+      await g.fade(como100, 12);
+      await g.delay(duration: 100);
+      await g.fade(brown400, 10);
+
+      g.toGivenPath(brown400, [9, 15, 21]);
+      await g.toPath(como100, 30, color: c.cannon100.value);
+
+      await g.delay(duration: 300);
+
+      g.colorChange(c.brown100.value, brown100);
+      await g.delay(duration: 100);
+
+      g.colorChange(c.brown200.value, brown200);
+      g.toGivenPath(brown200, [7, 8, 9, 3], color: c.bay200.value);
+      await g.toPath(brown100, 24, color: c.bay100.value);
+
+      await g.delay(duration: 300);
+
+      g.colorChange(c.como200.value, como200);
+      await g.delay(duration: 100);
+
+      g.colorChange(c.como.value, como);
+      await g.delay(duration: 100);
+      g.colorChange(c.como400.value, como400);
+      await g.delay(duration: 100);
+      g.colorChange(c.cannon200.value, como200);
+      await g.delay(duration: 100);
+      g.colorChange(c.brown700.value, brown700);
+
+      g.toPath(como200, 1);
+      g.right(como);
+      g.colorChange(c.cannon400.value, como400);
+      await g.toGivenPath(brown700, [11, 10, 9, 8], color: c.bay.value);
+
+      g.colorChange(c.como700.value, como700);
+      await g.up(como700);
+      await g.fade(brown, 27);
+
+      g.up(brown100);
+      await g.up(como700);
+
+      g.toPath(brown400, 23, color: c.bay400.value);
+      g.colorChange(c.cannon.value, como700);
+      await g.toGivenPath(brown, [33, 34, 35], lastMove: true);
 
       //post frame callback end
     });
@@ -159,7 +218,7 @@ class _Level_28State extends State<Level_28> {
               padding: const EdgeInsets.all(23),
               unlockColor: c.unlockColor,
               lockColor: c.lockColor,
-              canChange: false,
+              canChange: true,
               position: CustomIcons.circle_2,
               onReorderList: g.onListReorder,
               unlockFlag: g.unlockFlag.value,

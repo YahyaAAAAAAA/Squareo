@@ -109,7 +109,7 @@ class _Level_22State extends State<Level_22> {
 
       await g.delay(duration: 500);
 
-      g.colorChange(c.black300.value, black300);
+      g.colorChange(c.black400.value, black300);
       g.toGivenPath(black300, [9, 4, 3, 8, 7, 12]);
 
       await g.toGivenPath(black, [11, 12, 17, 22, 21, 20]);

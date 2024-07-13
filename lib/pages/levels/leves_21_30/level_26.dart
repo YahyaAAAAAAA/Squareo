@@ -154,19 +154,17 @@ class _Level_26State extends State<Level_26> {
       g.toGivenPath(sun300, [27, 26, 25, 24]);
       await g.toGivenPath(gold, [8, 9, 10, 11], color: c.red.value);
 
-      g.toGivenPath(sun, [21, 15, 9, 10], color: c.pink.value);
+      g.toGivenPath(sun, [21, 15, 9, 10]);
       await g.toGivenPath(sun700, [20, 14, 8, 7]);
 
-      g.toGivenPath(sun300, [25, 26, 27, 27, 21], color: c.pink300.value);
+      g.toGivenPath(sun300, [25, 26, 27, 27, 21]);
       await g.toGivenPath(gold300, [19, 20, 21, 15], color: c.red300.value);
 
       g.toGivenPath(gold800, [28, 27, 26, 20]);
       g.colorChange(c.mexRed300.value, gold400);
       await g.toGivenPath(gold700, [1, 2, 8, 14]);
 
-      g.colorChange(c.prim_1.value, sun800);
-      await g.toGivenPath(sun700, [8, 9],
-          color: c.pink700.value, lastMove: true);
+      await g.toGivenPath(sun700, [8, 9], lastMove: true);
 
       //post frame callback end
     });
