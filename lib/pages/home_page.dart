@@ -291,13 +291,13 @@ class _HomePageState extends State<HomePage> {
                 logo: const AssetImage('assets/images/pfp12313.PNG'),
                 email: 'yahya.amarneh73@gmail.com',
                 companyName: 'Yahya',
-                phoneNumber: '+962797863063',
+                phoneNumber: null,
                 dividerThickness: 2,
-                githubUserName: 'YahyaAmarneh', //'YahyaAmarneh',
+                githubUserName: 'YahyaAAAAAAA',
                 linkedinURL:
                     'https://www.linkedin.com/in/yahya-amarneh-315528229/', //'https://www.linkedin.com/in/yahya-amarneh-315528229/'
                 tagLine: 'Software Engineer',
-                twitterHandle: null, //AHHHHHHHHHHH29
+                twitterHandle: null,
                 textColor: c.mainColor1,
                 cardColor: c.textColor,
                 companyColor: c.textColor,

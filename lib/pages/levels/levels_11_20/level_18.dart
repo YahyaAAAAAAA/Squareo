@@ -106,7 +106,7 @@ class _Level_18State extends State<Level_18> {
       pink1.secondIndex = pink1.initIndex - 1;
       blue1.secondIndex = blue1.initIndex + 1;
       piege1.secondIndex = piege1.initIndex - 1;
-      piege2.secondIndex = piege2.initIndex + columnSize;
+      piege2.secondIndex = piege2.initIndex - 1;
       blue2.secondIndex = blue2.initIndex - columnSize;
       pink2.secondIndex = pink2.initIndex - 1;
 
