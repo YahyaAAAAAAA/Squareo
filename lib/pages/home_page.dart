@@ -33,19 +33,6 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     square.hiveDataCheck();
 
-    //Data reset
-    // square.db.createInitialDataList();
-    // square.db.createInitialDataBorderOpacity();
-    // square.db.createInitialDataBorderRadius();
-    // square.db.createInitialDataBought();
-    // square.db.createInitialDataCoins();
-    // square.db.createInitialDataIcon();
-    // square.db.createInitialDataInner();
-    // square.db.createInitialDataScores();
-    // square.db.createInitialDataTheme();
-    // square.db.levelsUnlock[10] = true;
-    // square.db.updateDataBase();
-
     _selectedTheme = square.db.themeSwitch;
 
     super.initState();

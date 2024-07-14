@@ -59,7 +59,7 @@ class Square {
   bool activeDrag = false;
 
   //temp value for testing
-  bool numbersFlag = true;
+  bool numbersFlag = false;
 
   //temp value for testing dialogs barrier
   bool barrierDismiss = false;
