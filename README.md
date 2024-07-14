@@ -86,10 +86,18 @@ https://github.com/YahyaAmarneh/Squareo/assets/44685017/d3a4d4af-a0c3-4465-9f91-
 
 ###
 
+<h2 align="left">Technologies Used</h2>
+
+###
+
+<p align="left">Squareo is developed using the framework Flutter with Dart as the programming language and with Getx as a state management and Hive as a the local database.</p>
+
+###
+
 <h2 align="left">Credits</h2>
 
 ###
 
-<p align="left">Squareo is developed by me Yahya Amarneh. I hope you enjoy playing my game as much as I enjoyed creating it. For support or feedback, please contact me above.</p>
+<p align="left">Squareo is developed by me Yahya. I hope you enjoy playing my game as much as I enjoyed creating it. For support or feedback, please contact me above.</p>
 
 ###
