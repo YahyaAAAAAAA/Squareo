@@ -4,6 +4,7 @@ import 'package:window_manager/window_manager.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:Squareo/pages/home_page.dart';
 import 'package:flutter/services.dart';
+import 'dart:io' show Platform;
 
 void main() async {
   //init the Hive
@@ -11,23 +12,26 @@ void main() async {
   await Hive.initFlutter();
 
   // WidgetsFlutterBinding.ensureInitialized();
-  await windowManager.ensureInitialized();
 
-  WindowOptions windowOptions = const WindowOptions(
-    size: Size(500, 837),
-    center: true,
-    backgroundColor: Colors.transparent,
-    skipTaskbar: false,
-    titleBarStyle: TitleBarStyle.normal,
-    windowButtonVisibility: false,
-    maximumSize: Size(500, 837),
-    minimumSize: Size(500, 837),
-  );
+  if (Platform.isWindows) {
+    await windowManager.ensureInitialized();
 
-  windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.show();
-    await windowManager.focus();
-  });
+    WindowOptions windowOptions = const WindowOptions(
+      size: Size(500, 837),
+      center: true,
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.normal,
+      windowButtonVisibility: false,
+      maximumSize: Size(500, 837),
+      minimumSize: Size(500, 837),
+    );
+
+    windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  }
 
   //opne a box
   await Hive.openBox('myBox');
