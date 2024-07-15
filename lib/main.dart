@@ -35,6 +35,7 @@ void main() async {
       });
     }
   }
+
   //opne a box
   await Hive.openBox('myBox');
 

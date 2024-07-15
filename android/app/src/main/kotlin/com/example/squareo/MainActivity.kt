@@ -1,4 +1,4 @@
-package com.example.squareo
+package com.example.squareoquareo
 
 import io.flutter.embedding.android.FlutterActivity
 
