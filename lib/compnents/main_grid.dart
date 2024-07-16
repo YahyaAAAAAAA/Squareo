@@ -73,7 +73,7 @@ class MainGrid extends StatelessWidget {
                   ? 480
                   //if platform is windows or mac
                   : 390,
-          height: MediaQuery.of(context).size.height / 2,
+          height: MediaQuery.of(context).size.height / 1.5,
           padding: padding,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
