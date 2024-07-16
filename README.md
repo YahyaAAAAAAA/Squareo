@@ -94,6 +94,31 @@ https://github.com/YahyaAmarneh/Squareo/assets/44685017/d3a4d4af-a0c3-4465-9f91-
 
 ###
 
+<h2 align="left">Play Squareo Now</h2>
+
+###
+
+<div align="left">
+<a href="https://github.com/YahyaAAAAAAA/Squareo/releases/tag/v1.1.0" style="text-decoration: none">
+  <img src="assets/images/a_logo.png" height="100" alt="hive logo"  />
+</a>
+  
+<img width="12" />
+  
+<a  style="text-decoration: dotted" href="https://github.com/YahyaAAAAAAA/Squareo/releases/tag/v1.1.0-windows ">
+  <img src="assets/images/w_logo.png" height="100" alt="hive logo"  />
+</a>
+
+<img width="12" />
+
+<a style="text-decoration: none" href="https://github.com/YahyaAAAAAAA/Squareo/releases/tag/v1.1.0-windows" >
+  <img src="assets/images/c_logo.png" height="100" alt="hive logo"  />
+</a>
+  
+</div>
+
+###
+
 <h2 align="left">Credits</h2>
 
 ###
