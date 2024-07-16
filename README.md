@@ -111,7 +111,7 @@ https://github.com/YahyaAmarneh/Squareo/assets/44685017/d3a4d4af-a0c3-4465-9f91-
 
 <img width="12" />
 
-<a style="text-decoration: none" href="https://github.com/YahyaAAAAAAA/Squareo/releases/tag/v1.1.0-windows" >
+<a style="text-decoration: none" href="https://squareoweb.github.io/" >
   <img src="assets/images/c_logo.png" height="100" alt="hive logo"  />
 </a>
   
