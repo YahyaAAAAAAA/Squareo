@@ -1,7 +1,3 @@
-<h2 align="left">Welcome to my game Squareo, I'm Yahya</h2>
-
-###
-
 <img align="right" height="110" src="assets/icon/squareo_icon.png"  />
 
 ###
@@ -123,6 +119,6 @@ https://github.com/YahyaAmarneh/Squareo/assets/44685017/d3a4d4af-a0c3-4465-9f91-
 
 ###
 
-<p align="left">Squareo is developed by me Yahya. I hope you enjoy playing my game as much as I enjoyed creating it. For support or feedback, please contact me above.</p>
+<p align="left">Squareo is developed by me, I hope you enjoy playing my game as much as I enjoyed creating it. For support or feedback, please contact me above.</p>
 
 ###
